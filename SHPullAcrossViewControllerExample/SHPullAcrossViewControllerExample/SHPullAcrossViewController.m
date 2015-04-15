@@ -8,9 +8,9 @@
 
 #import "SHPullAcrossViewController.h"
 //Utils
-#import "SHUtility.h"
+//#import "SHUtility.h"
 #import "SHCGRectUtils.h"
-#import "UIColor+Utils.h"
+//#import "UIColor+Utils.h"
 //Views
 #import "SHPullAcrossView.h"
 #import "SHPullAcrossViewControllerPanGestureRecognizer.h"
@@ -57,7 +57,7 @@
         
         self.greyBackgroundView = [[UIView alloc] init];
         
-        [SHUtility addTapGestureRecognizer:self.greyTap view:self.greyBackgroundView target:self selector:@selector(closePullAcrossView)];
+//        [SHUtility addTapGestureRecognizer:self.greyTap view:self.greyBackgroundView target:self selector:@selector(closePullAcrossView)];
         
         self.pullAcrossView = [[SHPullAcrossView alloc]initWithController:self];
         self.pullAcrossView.greyBackgroundView = self.greyBackgroundView;
@@ -290,7 +290,7 @@
         {
             position = SHPullAcrossVCPositionClosed;
         }
-        duration = fabsf([self _distanceRemainingToPosition:position] / (self.pullAcrossView.frame.size.width / 2) * (self.animationDuration * .75));
+        duration = fabs([self _distanceRemainingToPosition:position] / (self.pullAcrossView.frame.size.width / 2) * (self.animationDuration * .75));
     }
     [self _setPosition:position withDuration:duration];
 }
@@ -364,13 +364,13 @@
     {
         finalAlpha = self.greyBackgroundMaxFade;
     }
-    return [UIColor colorGreyOver255:25 alpha:finalAlpha];
+    return [UIColor colorWithRed:0.098f green:0.098f blue:0.098f alpha:finalAlpha];
 }
 
 -(UIColor*)determineBackgroundColorForPan
 {
     CGFloat pullAcrossPercentage = 1 - ((self.pullAcrossView.frame.origin.x - [self openXPosition]) / (self.pullAcrossView.frame.size.width - [self openXPosition]));
-    return [UIColor colorGreyOver255:25 alpha:pullAcrossPercentage * self.greyBackgroundMaxFade];
+    return [UIColor colorWithRed:0.098f green:0.098f blue:0.098f alpha:pullAcrossPercentage * self.greyBackgroundMaxFade];
 }
 
 -(CGFloat)closedXPosition
