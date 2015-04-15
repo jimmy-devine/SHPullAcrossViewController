@@ -17,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E205D1D1ADEB21900EA8B98 /* SHPullAcrossViewControllerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SHPullAcrossViewControllerExample.app; path = "/Users/bobcarson/Documents/SHPullAcrossViewController/SHPullAcrossViewControllerExample/build/Debug-iphoneos/SHPullAcrossViewControllerExample.app"; sourceTree = "<absolute>"; };
 		1ECC5AFF1A6C9CF3005F9AE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1ECC5B001A6C9CF3005F9AE1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1ECC5B021A6C9CF3005F9AE1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -24,7 +25,6 @@
 		1ECC5B051A6C9CF3005F9AE1 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		1ECC5B061A6C9CF3005F9AE1 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		1ECC5B0B1A6C9CF3005F9AE1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		1ECC5B241A6C9DEA005F9AE1 /* SHPullAcrossViewControllerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SHPullAcrossViewControllerExample.app; path = "/Users/bobcarson/Documents/SHPullAcrossViewController/SHPullAcrossViewControllerExample/build/Debug-iphoneos/SHPullAcrossViewControllerExample.app"; sourceTree = "<absolute>"; };
 		1ECC5B261A6CA320005F9AE1 /* SHPullAcrossView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHPullAcrossView.h; sourceTree = "<group>"; };
 		1ECC5B271A6CA320005F9AE1 /* SHPullAcrossView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHPullAcrossView.m; sourceTree = "<group>"; };
 		1ECC5B281A6CA320005F9AE1 /* SHPullAcrossViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHPullAcrossViewController.h; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 			);
 			name = SHPullAcrossViewControllerExample;
 			productName = SHPullAcrossViewControllerExample;
-			productReference = 1ECC5B241A6C9DEA005F9AE1 /* SHPullAcrossViewControllerExample.app */;
+			productReference = 1E205D1D1ADEB21900EA8B98 /* SHPullAcrossViewControllerExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
