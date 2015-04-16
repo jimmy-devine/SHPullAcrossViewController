@@ -35,15 +35,6 @@
 
 #pragma mark - Inits
 
--(id)initWithCoder:(NSCoder *)aDecoder
-{
-    if([super initWithCoder:aDecoder])
-    {
-        [self _initDefaults];
-    }
-    return self;
-}
-
 -(instancetype)init
 {
     return [self initWithViewController:nil];
@@ -56,6 +47,7 @@
         [self _initDefaults];
         
         self.greyBackgroundView = [[UIView alloc] init];
+        self.maskColor = [UIColor colorWithWhite:0.1f alpha:1.0f];
         
 //        [SHUtility addTapGestureRecognizer:self.greyTap view:self.greyBackgroundView target:self selector:@selector(closePullAcrossView)];
         
@@ -364,13 +356,13 @@
     {
         finalAlpha = self.greyBackgroundMaxFade;
     }
-    return [UIColor colorWithRed:0.098f green:0.098f blue:0.098f alpha:finalAlpha];
+    return [self.maskColor colorWithAlphaComponent:finalAlpha];
 }
 
 -(UIColor*)determineBackgroundColorForPan
 {
     CGFloat pullAcrossPercentage = 1 - ((self.pullAcrossView.frame.origin.x - [self openXPosition]) / (self.pullAcrossView.frame.size.width - [self openXPosition]));
-    return [UIColor colorWithRed:0.098f green:0.098f blue:0.098f alpha:pullAcrossPercentage * self.greyBackgroundMaxFade];
+    return [self.maskColor colorWithAlphaComponent:pullAcrossPercentage * self.greyBackgroundMaxFade];
 }
 
 -(CGFloat)closedXPosition

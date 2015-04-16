@@ -19,10 +19,11 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor redColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     self.pullAcrossViewController = [[SHPullAcrossViewController alloc] initWithViewController:[[UIViewController alloc] init]];
     self.pullAcrossViewController.delegate = self;
+//    self.pullAcrossViewController.maskColor = [UIColor redColor];
     
     [self addChildViewController:self.pullAcrossViewController];
     [self.view addSubview:self.pullAcrossViewController.view];

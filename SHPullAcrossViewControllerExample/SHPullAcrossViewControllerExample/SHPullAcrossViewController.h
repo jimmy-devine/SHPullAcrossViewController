@@ -29,6 +29,14 @@ typedef NS_ENUM(NSInteger, SHPullAcrossVCPosition)  {
 @property (nonatomic) BOOL hidden;
 @property (nonatomic, weak) UIView* tabView;
 
+/*
+ *  The color that will be shown over the parent view.  The alpha of this color will be changed programmatically to an appropriate value.  As
+ *  such, the alpha of this color will be disregarded.
+ *
+ *  Defaults to 10% grey.
+ */
+@property (nonatomic, copy) UIColor* maskColor;
+
 @property (nonatomic, weak) id<SHPullAcrossViewControllerDelegate> delegate;
 
 -(instancetype)initWithViewController:(UIViewController*)viewController;
