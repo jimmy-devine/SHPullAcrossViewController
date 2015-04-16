@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SHPullAcrossViewController.h"
 
-@interface MasterViewController : UIViewController
+@interface MasterViewController : UIViewController<SHPullAcrossViewControllerDelegate>
 
+@property (nonatomic, strong) SHPullAcrossViewController* pullAcrossViewController;
 
 @end
 

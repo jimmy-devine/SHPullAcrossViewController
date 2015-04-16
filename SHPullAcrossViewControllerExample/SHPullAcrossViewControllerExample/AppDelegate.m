@@ -23,6 +23,7 @@
     
     MasterViewController* masterViewController = [[MasterViewController alloc] init];
     self.window.rootViewController = masterViewController;
+    [self.window makeKeyAndVisible];
     
     return YES;
 }

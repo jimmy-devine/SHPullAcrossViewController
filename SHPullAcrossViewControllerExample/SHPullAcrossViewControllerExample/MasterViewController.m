@@ -7,6 +7,7 @@
 //
 
 #import "MasterViewController.h"
+#import "SHPullAcrossViewController.h"
 
 @interface MasterViewController ()
 
@@ -18,7 +19,25 @@
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor redColor];
     
+    self.pullAcrossViewController = [[SHPullAcrossViewController alloc] initWithViewController:[[UIViewController alloc] init]];
+    self.pullAcrossViewController.delegate = self;
+    
+    [self addChildViewController:self.pullAcrossViewController];
+    [self.view addSubview:self.pullAcrossViewController.view];
+}
+
+-(void)pullAcrossViewController:(SHPullAcrossViewController*)controller didChangePosition:(SHPullAcrossVCPosition)position hidden:(BOOL)hidden
+{
+    if(position == SHPullAcrossVCPositionOpen)
+    {
+        NSLog(@"It's Open");
+    }
+    else
+    {
+        NSLog(@"It's Closed");
+    }
 }
 
 @end
