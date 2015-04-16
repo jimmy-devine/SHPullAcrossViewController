@@ -8,9 +8,7 @@
 
 #import "SHPullAcrossViewController.h"
 //Utils
-//#import "SHUtility.h"
 #import "SHCGRectUtils.h"
-//#import "UIColor+Utils.h"
 //Views
 #import "SHPullAcrossView.h"
 #import "SHPullAcrossViewControllerPanGestureRecognizer.h"
