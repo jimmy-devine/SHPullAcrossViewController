@@ -259,7 +259,7 @@
     CGFloat velocity = [recognizer velocityInView:self.pullAcrossView].x;
     NSTimeInterval duration;
     SHPullAcrossVCPosition position;
-    if(fabsf(velocity) > self.minimumPanVelocity)
+    if(fabs(velocity) > self.minimumPanVelocity)
     {
         if(velocity < 0)
         {
@@ -269,7 +269,7 @@
         {
             position = SHPullAcrossVCPositionClosed;
         }
-        duration = fabsf([self _distanceRemainingToPosition:position] / velocity);
+        duration = fabs([self _distanceRemainingToPosition:position] / velocity);
     }
     else
     {
