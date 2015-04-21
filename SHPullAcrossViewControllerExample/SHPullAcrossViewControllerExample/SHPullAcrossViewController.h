@@ -27,13 +27,24 @@ typedef NS_ENUM(NSInteger, SHPullAcrossVCPosition)  {
 
 @property (nonatomic) SHPullAcrossVCPosition position;
 @property (nonatomic) BOOL hidden;
-@property (nonatomic, weak) UIView* tabView;
 
 /*
- *  The color that will be shown over the parent view.  The alpha of this color will be changed programmatically to an appropriate value.  As
- *  such, the alpha of this color will be disregarded.
- *
- *  Defaults to 10% grey.
+ This is the view that sticks out while the controller is in the closed state. It is what the user pulls or taps
+ to extend the SHPullAcrossViewController.
+ 
+ If you want to change where the tabview sits vertically, change the tabViewYPosition variable. The X and Y of 
+ the tabView's frame will be ignored and overwritten.
+*/
+@property (nonatomic, weak) UIView* tabView;
+
+//TODO Use this in .m
+@property (nonatomic) CGFloat tabViewYPosition;
+
+/*
+ The color that will be shown over the parent view.  The alpha of this color will be changed programmatically to an appropriate value.  As
+ such, the alpha of this color will be disregarded.
+
+ Defaults to 10% grey.
  */
 @property (nonatomic, copy) UIColor* maskColor;
 

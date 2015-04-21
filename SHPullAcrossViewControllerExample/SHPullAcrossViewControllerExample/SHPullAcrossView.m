@@ -27,6 +27,7 @@
     if(self = [super init])
     {
         self.tabView = [[UIView alloc] initWithFrame:CGRectMake(0, 72, 26, 32)];
+        self.tabView.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.tabView];
         
         self.controller = controller;

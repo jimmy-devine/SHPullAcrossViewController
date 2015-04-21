@@ -41,7 +41,7 @@
 		F4E224941ADEE93800FBF7AF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F4E224961ADEEA6800FBF7AF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F4E224981ADF094400FBF7AF /* SHPullAcrossViewControllerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHPullAcrossViewControllerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4E224991AE0662500FBF7AF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		F4E224991AE0662500FBF7AF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,14 +58,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1ECC5AF21A6C9CF3005F9AE1 = {
+		1E91B6BF1AE072A300795C7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F4E224991AE0662500FBF7AF /* Default-568h@2x.png */,
-				1ECC5AFD1A6C9CF3005F9AE1 /* SHPullAcrossViewControllerExample */,
 				F4E224961ADEEA6800FBF7AF /* UIKit.framework */,
 				F4E224941ADEE93800FBF7AF /* Foundation.framework */,
 				F4E224921ADEE8E200FBF7AF /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1ECC5AF21A6C9CF3005F9AE1 = {
+			isa = PBXGroup;
+			children = (
+				1ECC5AFD1A6C9CF3005F9AE1 /* SHPullAcrossViewControllerExample */,
+				1E91B6BF1AE072A300795C7A /* Frameworks */,
 				F4E224981ADF094400FBF7AF /* SHPullAcrossViewControllerExample.app */,
 			);
 			sourceTree = "<group>";
@@ -80,6 +87,7 @@
 				1ECC5B061A6C9CF3005F9AE1 /* MasterViewController.m */,
 				1ECC5B0B1A6C9CF3005F9AE1 /* Images.xcassets */,
 				1ECC5AFE1A6C9CF3005F9AE1 /* Supporting Files */,
+				F4E224991AE0662500FBF7AF /* Default-568h@2x.png */,
 			);
 			path = SHPullAcrossViewControllerExample;
 			sourceTree = "<group>";
