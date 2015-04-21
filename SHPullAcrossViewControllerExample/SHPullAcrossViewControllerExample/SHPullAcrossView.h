@@ -10,14 +10,18 @@
 
 @class SHPullAcrossViewController;
 
+@protocol SHPullAcrossViewDelegate <NSObject>
+-(void) pullAcrossViewWasAddedToSuperView:(UIView*)superView;
+@end
+
 @interface SHPullAcrossView : UIView
 
 @property (nonatomic, strong) UIView* tabView;
 @property (nonatomic, strong) UIViewController* contentViewController;
 @property (nonatomic, strong) UIView* contentView;
+@property (nonatomic) BOOL enableShadow;
+@property (nonatomic, weak) id<SHPullAcrossViewDelegate> delgate;
 
-@property (nonatomic, weak) UIView* greyBackgroundView;
-
--(instancetype)initWithController:(SHPullAcrossViewController*)controller;
+-(instancetype)init;
 
 @end

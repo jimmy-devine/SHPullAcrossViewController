@@ -44,18 +44,11 @@
     {
         [self _initDefaults];
         
-        self.greyBackgroundView = [[UIView alloc] init];
-        self.maskColor = [UIColor colorWithWhite:0.1f alpha:1.0f];
-        
-//        [SHUtility addTapGestureRecognizer:self.greyTap view:self.greyBackgroundView target:self selector:@selector(closePullAcrossView)];
-        
-        self.pullAcrossView = [[SHPullAcrossView alloc]initWithController:self];
-        self.pullAcrossView.greyBackgroundView = self.greyBackgroundView;
+        self.pullAcrossView = [[SHPullAcrossView alloc] init];
+        self.pullAcrossView.delgate = self;
         self.view = self.pullAcrossView;
-        
         self.pullAcrossView.contentViewController = viewController;
         [self addChildViewController:self.pullAcrossView.contentViewController];
-        
         self.pullAcrossView.contentView = self.pullAcrossView.contentViewController.view;
         [self.pullAcrossView addSubview:self.pullAcrossView.contentView];
         
@@ -76,6 +69,21 @@
     _shadowWidth = 5;
     _hidden = NO;
     _greyBackgroundMaxFade = .5f;
+    _maskColor = [UIColor colorWithWhite:0.1f alpha:1.0f];
+}
+
+#pragma mark - Getters and Setters
+
+-(UIView*) tabView
+{
+    if(self.pullAcrossView)
+    {
+        return self.pullAcrossView.tabView;
+    }
+    else
+    {
+        return nil;
+    }
 }
 
 #pragma mark - Positioning
@@ -283,6 +291,29 @@
         duration = fabs([self _distanceRemainingToPosition:position] / (self.pullAcrossView.frame.size.width / 2) * (self.animationDuration * .75));
     }
     [self _setPosition:position withDuration:duration];
+}
+
+#pragma mark - SHPullAcrossViewDelegate
+
+-(void) pullAcrossViewWasAddedToSuperView:(UIView*)superView
+{
+    [self _setupBackgroundView:superView];
+}
+
+#pragma mark -
+
+-(void)_setupBackgroundView:(UIView*)superView
+{
+    self.greyBackgroundView = [[UIView alloc] init];
+    
+    self.greyBackgroundView.frame = superView.bounds;
+    if(self.greyBackgroundView.superview)
+    {
+        [self.greyBackgroundView removeFromSuperview];
+    }
+    [superView insertSubview:self.greyBackgroundView belowSubview:self.pullAcrossView];
+    
+    self.position = SHPullAcrossVCPositionClosed;
 }
 
 -(CGFloat)_distanceRemainingToPosition:(SHPullAcrossVCPosition)position

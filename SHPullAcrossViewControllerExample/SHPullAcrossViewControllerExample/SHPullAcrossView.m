@@ -14,25 +14,32 @@
 
 @interface SHPullAcrossView ()
 
-@property (nonatomic, weak) SHPullAcrossViewController* controller;
-
 @end
 
 @implementation SHPullAcrossView
 
 #pragma mark - init
 
--(instancetype)initWithController:(SHPullAcrossViewController*)controller
+-(instancetype)init
 {
     if(self = [super init])
     {
-        self.tabView = [[UIView alloc] initWithFrame:CGRectMake(0, 72, 26, 32)];
-        self.tabView.backgroundColor = [UIColor whiteColor];
-        [self addSubview:self.tabView];
-        
-        self.controller = controller;
+        [self _initDefaults];
     }
     return self;
+}
+
+-(void) _initDefaults
+{
+    self.enableShadow = YES;
+    
+    self.tabView = [[UIView alloc] initWithFrame:CGRectMake(0, 72, 26, 32)];
+    self.tabView.backgroundColor = [UIColor whiteColor];
+    
+    [self setupFrames];
+    [self setupRoundedCorners];
+    
+    [self addSubview:self.tabView];
 }
 
 #pragma mark - Setters
@@ -40,55 +47,21 @@
 {
     _contentView = contentView;
     [self setupFrames];
-    [self setupShadows];
 }
 
 -(void)setTabView:(UIView *)tabView
 {
     _tabView = tabView;
-    [self setupFrames];
-    [self setupRoundedCorners];
-    [self setupShadows];
 }
 
--(void)setController:(SHPullAcrossViewController *)controller
-{
-    controller.tabView = self.tabView;
-    _controller = controller;
-}
+#pragma mark -
 
 -(void)didMoveToSuperview
 {
-    self.greyBackgroundView.frame = self.superview.bounds;
-    if(self.greyBackgroundView.superview)
+    if(self.delgate)
     {
-        [self.greyBackgroundView removeFromSuperview];
+        [self.delgate pullAcrossViewWasAddedToSuperView:self.superview];
     }
-    [self.superview insertSubview:self.greyBackgroundView belowSubview:self];
-    [self.controller setPosition:SHPullAcrossVCPositionClosed];
-}
-
--(void)setupShadows
-{
-    self.layer.masksToBounds = NO;
-    
-    self.layer.shadowOpacity = 0.75f;
-    self.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.layer.shadowRadius = 2.5f;
-    self.layer.shadowOffset = CGSizeMake(-3.5, 3.5);
-    
-    UIBezierPath* shadowPath = [UIBezierPath bezierPath];
-    [shadowPath moveToPoint:CGPointMake(self.contentView.frame.origin.x, -5)]; //Top left of contentView
-    [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.tabView.frame.origin.y)]; //Top right of tabView
-    [shadowPath addLineToPoint:CGPointMake(0, self.tabView.frame.origin.y)]; //Top left of tabView
-    [shadowPath addLineToPoint:CGPointMake(0, self.tabView.frame.origin.y + self.tabView.frame.size.height)]; //Bottom left of tabView
-    [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.tabView.frame.origin.y + self.tabView.frame.size.height)]; //Bottom right of tabView
-    [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.contentView.frame.size.height)];  //Bottom left of contentView
-    [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.size.width, self.contentView.frame.size.height)]; //Bottom right of contentView
-    [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.size.width, -5)]; //Top right of contentView
-    [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, -5)]; //Back to top left
-    
-    self.layer.shadowPath = shadowPath.CGPath;
 }
 
 -(void)setupRoundedCorners
@@ -110,6 +83,33 @@
     self.frame = CGRectWidthHeight(self.frame, self.contentView.frame.size.width + self.tabView.frame.size.width, self.contentView.frame.size.height);
     
     self.contentView.frame = CGRectX(self.contentView.frame, self.tabView.frame.size.width - 1);
+    
+    if(self.enableShadow)
+    {
+        self.layer.masksToBounds = NO;
+        
+        self.layer.shadowOpacity = 0.75f;
+        self.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.layer.shadowRadius = 2.5f;
+        self.layer.shadowOffset = CGSizeMake(-3.5, 3.5);
+        
+        UIBezierPath* shadowPath = [UIBezierPath bezierPath];
+        [shadowPath moveToPoint:CGPointMake(self.contentView.frame.origin.x, -5)]; //Top left of contentView
+        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.tabView.frame.origin.y)]; //Top right of tabView
+        [shadowPath addLineToPoint:CGPointMake(0, self.tabView.frame.origin.y)]; //Top left of tabView
+        [shadowPath addLineToPoint:CGPointMake(0, self.tabView.frame.origin.y + self.tabView.frame.size.height)]; //Bottom left of tabView
+        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.tabView.frame.origin.y + self.tabView.frame.size.height)]; //Bottom right of tabView
+        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.contentView.frame.size.height)];  //Bottom left of contentView
+        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.size.width, self.contentView.frame.size.height)]; //Bottom right of contentView
+        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.size.width, -5)]; //Top right of contentView
+        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, -5)]; //Back to top left
+        
+        self.layer.shadowPath = shadowPath.CGPath;
+    }
+    else
+    {
+        self.layer.shadowOpacity = 0.0f;
+    }
 }
 
 -(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event

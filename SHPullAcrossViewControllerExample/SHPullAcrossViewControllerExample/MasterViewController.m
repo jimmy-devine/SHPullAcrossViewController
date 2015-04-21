@@ -21,11 +21,11 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UIViewController* pullAcrossContentViewController = [[UIViewController alloc] init];
-    pullAcrossContentViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width - 50, self.view.frame.size.height);
-    pullAcrossContentViewController.view.backgroundColor = [UIColor orangeColor];
+    UIViewController* contentViewController = [[UIViewController alloc] init];
+    contentViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width - 50, self.view.frame.size.height);
+    contentViewController.view.backgroundColor = [UIColor blueColor];
     
-    self.pullAcrossViewController = [[SHPullAcrossViewController alloc] initWithViewController:pullAcrossContentViewController];
+    self.pullAcrossViewController = [[SHPullAcrossViewController alloc] initWithViewController:contentViewController];
     self.pullAcrossViewController.delegate = self;
     self.pullAcrossViewController.tabView.backgroundColor = [UIColor orangeColor];
     
