@@ -11,9 +11,11 @@
 
 @interface MasterViewController : UIViewController<SHPullAcrossViewControllerDelegate>
 
+@property (nonatomic, weak) IBOutlet UISlider* tabYPositionSlider;
+
 @property (nonatomic, strong) SHPullAcrossViewController* pullAcrossViewController;
 
-- (IBAction)sliderValueChanged:(UISlider *)sender;
+-(IBAction)sliderValueChanged:(UISlider *)sender;
 
 @end
 

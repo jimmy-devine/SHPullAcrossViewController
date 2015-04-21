@@ -52,11 +52,27 @@ typedef NS_ENUM(NSInteger, SHPullAcrossVCPosition)  {
 @property (nonatomic) CGSize tabViewSize;
 
 /*
- The color that will be shown over the parent view.  The alpha of this color will be changed programmatically to an appropriate value.  As such, the alpha of this color will be disregarded.
+ When true, places a mask over the SHPullAcrossView's superview when the SHPullAcrossView is extended or being extended. This prevents touches to the superview and can also fade to darken the superview.
+ 
+ Defaults to YES.
+ */
+@property (nonatomic) BOOL showSuperviewMaskWhenOpen;
+
+/*
+ The color that will be shown over the parent view when the menu is pulled out.  The alpha of this color will be changed programmatically to an appropriate value thus the alpha of this color will be disregarded.
 
  Defaults to 10% grey.
  */
-@property (nonatomic, copy) UIColor* maskColor;
+@property (nonatomic, copy) UIColor* superviewMaskColor;
+
+/*
+ The alpha of the superview mask when SHPullAcrossView is fully extended
+ 
+ A value between 0 and 1, inclusive.
+ 
+ Defaults to 0.5f.
+ */
+@property (nonatomic) CGFloat superviewMaskMaxAlpha;
 
 @property (nonatomic, weak) id<SHPullAcrossViewControllerDelegate> delegate;
 

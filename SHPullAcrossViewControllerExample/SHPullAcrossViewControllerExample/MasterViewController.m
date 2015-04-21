@@ -21,10 +21,8 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    //Set up slider
-    UISlider* slider = [[UISlider alloc] initWithFrame:CGRectMake(10, 100, 300, 20)];
-    [self.view addSubview:slider];
-    [slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+    self.tabYPositionSlider.maximumValue = self.view.frame.size.height - 60;
+    self.tabYPositionSlider.value = 70;
     
     //Set up Pull Across View
     UIViewController* contentViewController = [[UIViewController alloc] init];
@@ -37,7 +35,6 @@
     
     [self addChildViewController:self.pullAcrossViewController];
     [self.view addSubview:self.pullAcrossViewController.view];
-    
 }
 
 -(void)pullAcrossViewController:(SHPullAcrossViewController*)controller didChangePosition:(SHPullAcrossVCPosition)position hidden:(BOOL)hidden
@@ -54,7 +51,7 @@
 
 -(IBAction)sliderValueChanged:(UISlider *)sender
 {
-    self.pullAcrossViewController.tabViewYPosition = 70 + 200 * sender.value;
+    self.pullAcrossViewController.tabViewYPosition = sender.value;
 }
 
 @end

@@ -11,7 +11,7 @@
 @class SHPullAcrossViewController;
 
 @protocol SHPullAcrossViewDelegate <NSObject>
--(void) pullAcrossViewWasAddedToSuperView:(UIView*)superView;
+-(void) pullAcrossViewWasAddedToSuperview:(UIView*)superview;
 @end
 
 @interface SHPullAcrossView : UIView

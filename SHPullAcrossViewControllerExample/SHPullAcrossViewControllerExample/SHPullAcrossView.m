@@ -65,7 +65,7 @@
 {
     if(self.delgate)
     {
-        [self.delgate pullAcrossViewWasAddedToSuperView:self.superview];
+        [self.delgate pullAcrossViewWasAddedToSuperview:self.superview];
     }
 }
 
