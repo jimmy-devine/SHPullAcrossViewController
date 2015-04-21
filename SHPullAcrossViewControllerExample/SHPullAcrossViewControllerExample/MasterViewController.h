@@ -13,5 +13,7 @@
 
 @property (nonatomic, strong) SHPullAcrossViewController* pullAcrossViewController;
 
+- (IBAction)sliderValueChanged:(UISlider *)sender;
+
 @end
 

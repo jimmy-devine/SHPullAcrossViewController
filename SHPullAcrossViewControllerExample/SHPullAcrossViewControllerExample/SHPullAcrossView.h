@@ -23,5 +23,6 @@
 @property (nonatomic, weak) id<SHPullAcrossViewDelegate> delgate;
 
 -(instancetype)init;
+-(void)setTabViewFrame:(CGRect)frame;
 
 @end

@@ -55,6 +55,11 @@
 }
 
 #pragma mark -
+-(void)setTabViewFrame:(CGRect)frame
+{
+    self.tabView.frame = frame;
+    [self setupFrames];
+}
 
 -(void)didMoveToSuperview
 {

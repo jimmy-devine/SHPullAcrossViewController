@@ -23,8 +23,10 @@
 @property (nonatomic) CGFloat minimumPanVelocity;
 @property (nonatomic) NSTimeInterval animationDuration;
 @property (nonatomic) CGFloat shadowWidth;
-@property (nonatomic, strong) UIView* greyBackgroundView;
-@property (nonatomic) CGFloat greyBackgroundMaxFade;
+@property (nonatomic, strong) UIView* backgroundView;
+@property (nonatomic) CGFloat backgroundMaxFade;
+
+//TODO: implement this
 @property (nonatomic, strong) UITapGestureRecognizer* greyTap;
 
 @end
@@ -68,8 +70,10 @@
     _animationDuration = .3f;
     _shadowWidth = 5;
     _hidden = NO;
-    _greyBackgroundMaxFade = .5f;
+    _backgroundMaxFade = .5f;
     _maskColor = [UIColor colorWithWhite:0.1f alpha:1.0f];
+    _tabViewYPosition = 72;
+    _tabViewSize = CGSizeMake(26, 32);
 }
 
 #pragma mark - Getters and Setters
@@ -84,6 +88,18 @@
     {
         return nil;
     }
+}
+
+-(void) setTabViewYPosition:(CGFloat)tabViewYPosition
+{
+    _tabViewYPosition = tabViewYPosition;
+    [self _updateTabViewFrame];
+}
+
+-(void) setTabViewSize:(CGSize)tabViewSize
+{
+    _tabViewSize = tabViewSize;
+    [self _updateTabViewFrame];
 }
 
 #pragma mark - Positioning
@@ -124,7 +140,7 @@
         _hidden = hidden;
         void(^completion)(BOOL finished) = ^(BOOL finished){
             self.pullAcrossView.hidden = hidden;
-            self.greyBackgroundView.hidden = YES;
+            self.backgroundView.hidden = YES;
         };
         CGRect finalFrame;
         if(hidden)
@@ -214,7 +230,7 @@
         case UIGestureRecognizerStateBegan:
         {
             self.lastXMovement = 0;
-            self.greyBackgroundView.hidden = NO;
+            self.backgroundView.hidden = NO;
             break;
         }
             
@@ -236,7 +252,7 @@
             
             self.pullAcrossView.frame = CGRectX(self.pullAcrossView.frame, newLocation);
             self.lastXMovement = xMovement;
-            self.greyBackgroundView.backgroundColor = [self determineBackgroundColorForPan];
+            self.backgroundView.backgroundColor = [self determineBackgroundColorForPan];
             break;
         }
             
@@ -302,16 +318,21 @@
 
 #pragma mark -
 
+-(void)_updateTabViewFrame
+{
+    [self.pullAcrossView setTabViewFrame:CGRectMake(0, self.tabViewYPosition, self.tabViewSize.width, self.tabViewSize.height)];
+}
+
 -(void)_setupBackgroundView:(UIView*)superView
 {
-    self.greyBackgroundView = [[UIView alloc] init];
+    self.backgroundView = [[UIView alloc] init];
     
-    self.greyBackgroundView.frame = superView.bounds;
-    if(self.greyBackgroundView.superview)
+    self.backgroundView.frame = superView.bounds;
+    if(self.backgroundView.superview)
     {
-        [self.greyBackgroundView removeFromSuperview];
+        [self.backgroundView removeFromSuperview];
     }
-    [superView insertSubview:self.greyBackgroundView belowSubview:self.pullAcrossView];
+    [superView insertSubview:self.backgroundView belowSubview:self.pullAcrossView];
     
     self.position = SHPullAcrossVCPositionClosed;
 }
@@ -334,11 +355,11 @@
 {
     void(^animations)() = ^{
         self.pullAcrossView.frame = [self determineFinalPosition:position];
-        self.greyBackgroundView.backgroundColor = [self determineBackgroundColorForPosition:position];
+        self.backgroundView.backgroundColor = [self determineBackgroundColorForPosition:position];
     };
     
     void(^completion)(BOOL finished) = ^(BOOL finished){
-        self.greyBackgroundView.hidden = position == SHPullAcrossVCPositionClosed;
+        self.backgroundView.hidden = position == SHPullAcrossVCPositionClosed;
         if([self.delegate respondsToSelector:@selector(pullAcrossViewController:didChangePosition:hidden:)])
         {
             [self.delegate pullAcrossViewController:self didChangePosition:position hidden:self.hidden];
@@ -347,7 +368,7 @@
     };
     if(position == SHPullAcrossVCPositionOpen)
     {
-        self.greyBackgroundView.hidden = NO;
+        self.backgroundView.hidden = NO;
     }
     if(duration > 0)
     {
@@ -383,7 +404,7 @@
     }
     else
     {
-        finalAlpha = self.greyBackgroundMaxFade;
+        finalAlpha = self.backgroundMaxFade;
     }
     return [self.maskColor colorWithAlphaComponent:finalAlpha];
 }
@@ -391,7 +412,7 @@
 -(UIColor*)determineBackgroundColorForPan
 {
     CGFloat pullAcrossPercentage = 1 - ((self.pullAcrossView.frame.origin.x - [self openXPosition]) / (self.pullAcrossView.frame.size.width - [self openXPosition]));
-    return [self.maskColor colorWithAlphaComponent:pullAcrossPercentage * self.greyBackgroundMaxFade];
+    return [self.maskColor colorWithAlphaComponent:pullAcrossPercentage * self.backgroundMaxFade];
 }
 
 -(CGFloat)closedXPosition
