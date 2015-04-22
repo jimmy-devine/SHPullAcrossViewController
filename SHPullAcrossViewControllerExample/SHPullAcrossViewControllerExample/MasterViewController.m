@@ -64,4 +64,9 @@
     self.pullAcrossViewController.superviewMaskMaxAlpha = sender.value;
 }
 
+-(IBAction)closedXOffsetSliderValueChanged:(UISlider *)sender
+{
+    self.pullAcrossViewController.closedXOffset = sender.value;
+}
+
 @end

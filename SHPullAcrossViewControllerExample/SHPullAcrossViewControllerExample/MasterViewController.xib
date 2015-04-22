@@ -60,6 +60,18 @@
                         <action selector="superviewMaskMaxAlphaSliderValueChanged:" destination="-1" eventType="valueChanged" id="Ocl-pF-RQo"/>
                     </connections>
                 </slider>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Closed X Offset" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJ2-Ax-tUW">
+                    <rect key="frame" x="33" y="276" width="254" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="Kto-q0-c92">
+                    <rect key="frame" x="31" y="305" width="258" height="31"/>
+                    <connections>
+                        <action selector="closedXOffsetSliderValueChanged:" destination="-1" eventType="valueChanged" id="LXn-9w-jMm"/>
+                    </connections>
+                </slider>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
