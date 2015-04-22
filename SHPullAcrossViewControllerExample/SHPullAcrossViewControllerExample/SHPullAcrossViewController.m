@@ -73,6 +73,8 @@
     _superviewMaskColor = [UIColor colorWithWhite:0.1f alpha:1.0f];
     _tabViewYPosition = 72;
     _tabViewSize = CGSizeMake(26, 32);
+    _closedXOffset = 0;
+    _openXOffset = 0;
 }
 
 #pragma mark - Getters and Setters
@@ -99,6 +101,29 @@
 {
     _tabViewSize = tabViewSize;
     [self _updateTabViewFrame];
+}
+
+-(void) setClosedXOffset:(CGFloat)closedXOffset
+{
+    [self setClosedXOffset:closedXOffset animated:NO];
+}
+
+-(void) setClosedXOffset:(CGFloat)closedXOffset animated:(BOOL)animated
+{
+    _closedXOffset = closedXOffset;
+    [self setPosition:self.position animated:animated];
+}
+
+
+-(void) setOpenXOffset:(CGFloat)openXOffset
+{
+    [self setOpenXOffset:openXOffset animated:NO];
+}
+
+-(void) setOpenXOffset:(CGFloat)openXOffset animated:(BOOL)animated
+{
+    _openXOffset = openXOffset;
+    [self setPosition:self.position animated:animated];
 }
 
 #pragma mark - Positioning
@@ -433,11 +458,11 @@
 
 -(CGFloat)closedXPosition
 {
-    return self.view.superview.frame.size.width + self.shadowWidth - self.pullAcrossView.tabView.frame.size.width;
+    return self.view.superview.frame.size.width + self.shadowWidth - self.pullAcrossView.tabView.frame.size.width - self.closedXOffset;
 }
 
 -(CGFloat)openXPosition
 {
-    return self.view.superview.frame.size.width + self.shadowWidth - self.pullAcrossView.frame.size.width;
+    return self.view.superview.frame.size.width + self.shadowWidth - self.pullAcrossView.frame.size.width - self.openXOffset;
 }
 @end

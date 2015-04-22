@@ -29,13 +29,27 @@ typedef NS_ENUM(NSInteger, SHPullAcrossVCPosition)  {
 @property (nonatomic) SHPullAcrossVCPosition position;
 @property (nonatomic) BOOL hidden;
 
+
+/*
+ How far onto the screen the edge of the content view controller is when the pull across controller is closed.  Positive numbers move it onto the screen.  Negative number move it furtherer off the screen.
+ 
+ Defaults to 0.
+ */
+@property (nonatomic) CGFloat closedXOffset;
+
+/*
+ How much further the SHPullAcrossView will open than the size of the content view controller.  Zero will open until all content is on the screen.  Positive numbers will open further, leaving empty space on the right.  Negative numbers will open less, hiding part of the content view
+ 
+ Defaults to 0.
+ */
+@property (nonatomic) CGFloat openXOffset;
+
 /*
  This is the view that sticks out while the controller is in the closed state. It is what the user pulls or taps to extend the SHPullAcrossViewController.  This view is created by SHPullAcrossViewController but can be altered safely.
  
  Do not change the frame for this view.  If you want to change the frame of the tabView use tabViewYPosition and tabViewSize.
 */
 @property (nonatomic, readonly) UIView* tabView;
-
 
 /*
  The y postition of the tab view.  Use this rather than setting the frame of the tabView.
