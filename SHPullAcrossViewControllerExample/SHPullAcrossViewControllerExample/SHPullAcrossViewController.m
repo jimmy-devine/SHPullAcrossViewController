@@ -66,7 +66,7 @@
     _animating = NO;
     _minimumPanVelocity = 500;
     _animationDuration = .3f;
-    _shadowWidth = 5;
+    _shadowWidth = 6;
     _hidden = NO;
     _showSuperviewMaskWhenOpen = YES;
     _superviewMaskMaxAlpha = .5f;

@@ -49,9 +49,19 @@
     }
 }
 
--(IBAction)sliderValueChanged:(UISlider *)sender
+-(IBAction)tabYPositionSliderValueChanged:(UISlider*)sender
 {
     self.pullAcrossViewController.tabViewYPosition = sender.value;
+}
+
+-(IBAction)showSuperviewMaskSwitchValueChanged:(UISwitch*)sender
+{
+    self.pullAcrossViewController.showSuperviewMaskWhenOpen = sender.on;
+}
+
+-(IBAction)superviewMaskMaxAlphaSliderValueChanged:(UISlider *)sender
+{
+    self.pullAcrossViewController.superviewMaskMaxAlpha = sender.value;
 }
 
 @end
