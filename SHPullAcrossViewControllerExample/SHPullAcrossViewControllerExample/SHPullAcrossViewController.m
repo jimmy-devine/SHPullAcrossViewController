@@ -26,6 +26,7 @@
 
 @property (nonatomic, strong) UIView* superviewMask;
 @property (nonatomic, strong) UITapGestureRecognizer* superviewMaskTap;
+@property (nonatomic) BOOL hiddenForRotation;
 
 @end
 
@@ -207,7 +208,7 @@
 -(void)setShowSuperviewMaskWhenOpen:(BOOL)showSuperviewMaskWhenOpen
 {
     _showSuperviewMaskWhenOpen = showSuperviewMaskWhenOpen;
-    [self _setupSuperviewMask:self.pullAcrossView.superview];
+    [self _setupSuperviewMask];
 }
 
 -(void) swapPosition
@@ -343,31 +344,51 @@
 
 -(void) pullAcrossViewWasAddedToSuperview:(UIView*)superview
 {
-    [self _setupSuperviewMask:superview];
+    [self _setupSuperviewMask];
 }
 
 #pragma mark -
+
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if(!self.hidden)
+    {
+        self.hidden = YES;
+        self.hiddenForRotation = YES;
+    }
+}
+
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    if(self.hiddenForRotation)
+    {
+        self.hidden = NO;
+        self.hiddenForRotation = NO;
+    }
+    self.superviewMask.frame = self.pullAcrossView.superview.bounds;
+    [self setPosition:self.position animated:NO];
+}
 
 -(void)_updateTabViewFrame
 {
     [self.pullAcrossView setTabViewFrame:CGRectMake(0, self.tabViewYPosition, self.tabViewSize.width, self.tabViewSize.height)];
 }
 
--(void)_setupSuperviewMask:(UIView*)superview
+-(void)_setupSuperviewMask
 {
-    if(self.showSuperviewMaskWhenOpen && superview)
+    if(self.showSuperviewMaskWhenOpen && self.pullAcrossView.superview)
     {
         self.superviewMask = [[UIView alloc] init];
         
         self.superviewMaskTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closePullAcrossView)];
         [self.superviewMask addGestureRecognizer:self.superviewMaskTap];
         
-        self.superviewMask.frame = superview.bounds;
+        self.superviewMask.frame = self.pullAcrossView.superview.bounds;
         if(self.superviewMask.superview)
         {
             [self.superviewMask removeFromSuperview];
         }
-        [superview insertSubview:self.superviewMask belowSubview:self.pullAcrossView];
+        [self.pullAcrossView.superview insertSubview:self.superviewMask belowSubview:self.pullAcrossView];
     }
     else
     {
