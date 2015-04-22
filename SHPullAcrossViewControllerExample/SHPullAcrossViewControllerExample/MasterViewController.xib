@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MasterViewController">
             <connections>
+                <outlet property="showSuperviewMaskSwitch" destination="vRE-pS-pVf" id="YPa-gy-7De"/>
+                <outlet property="superviewMaskMaxAlphaSlider" destination="zvu-cN-qyV" id="6Gk-rQ-aIu"/>
                 <outlet property="tabYPositionSlider" destination="Yxm-qr-BCL" id="yaZ-Ac-24l"/>
                 <outlet property="view" destination="Dgf-YF-ZsV" id="wZS-jM-6bV"/>
             </connections>
@@ -16,16 +18,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SHPullAcrossViewController Example" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zL-Yg-Hxg">
-                    <rect key="frame" x="8" y="35" width="312" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="40" maxValue="70" translatesAutoresizingMaskIntoConstraints="NO" id="Yxm-qr-BCL">
                     <rect key="frame" x="31" y="103" width="258" height="31"/>
                     <connections>
-                        <action selector="sliderValueChanged:" destination="-1" eventType="valueChanged" id="J7L-Te-P0V"/>
+                        <action selector="tabYPositionSliderValueChanged:" destination="-1" eventType="valueChanged" id="T4j-2P-tLT"/>
                     </connections>
                 </slider>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tab View Y Position" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETu-e9-4Sm">
@@ -34,6 +30,36 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SHPullAcrossViewController Example" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zL-Yg-Hxg">
+                    <rect key="frame" x="8" y="35" width="312" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vRE-pS-pVf">
+                    <rect key="frame" x="33" y="170" width="51" height="31"/>
+                    <connections>
+                        <action selector="showSuperviewMaskSwitchValueChanged:" destination="-1" eventType="valueChanged" id="r78-gX-sdy"/>
+                    </connections>
+                </switch>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show Superview Mask" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DeS-bX-JFp">
+                    <rect key="frame" x="33" y="141" width="239" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Superview Mask Max Alpha" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AXX-JX-dlH">
+                    <rect key="frame" x="33" y="209" width="254" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="zvu-cN-qyV">
+                    <rect key="frame" x="31" y="238" width="258" height="31"/>
+                    <connections>
+                        <action selector="superviewMaskMaxAlphaSliderValueChanged:" destination="-1" eventType="valueChanged" id="Ocl-pF-RQo"/>
+                    </connections>
+                </slider>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

@@ -99,15 +99,15 @@
         self.layer.shadowOffset = CGSizeMake(-3.5, 3.5);
         
         UIBezierPath* shadowPath = [UIBezierPath bezierPath];
-        [shadowPath moveToPoint:CGPointMake(self.contentView.frame.origin.x, -5)]; //Top left of contentView
-        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.tabView.frame.origin.y)]; //Top right of tabView
-        [shadowPath addLineToPoint:CGPointMake(0, self.tabView.frame.origin.y)]; //Top left of tabView
-        [shadowPath addLineToPoint:CGPointMake(0, self.tabView.frame.origin.y + self.tabView.frame.size.height)]; //Bottom left of tabView
+        [shadowPath moveToPoint:CGPointMake(self.contentView.frame.origin.x, -5)];                                                              //Top left of contentView
+        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.tabView.frame.origin.y)];                                  //Top right of tabView
+        [shadowPath addLineToPoint:CGPointMake(0, self.tabView.frame.origin.y)];                                                                //Top left of tabView
+        [shadowPath addLineToPoint:CGPointMake(0, self.tabView.frame.origin.y + self.tabView.frame.size.height)];                               //Bottom left of tabView
         [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.tabView.frame.origin.y + self.tabView.frame.size.height)]; //Bottom right of tabView
-        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.contentView.frame.size.height)];  //Bottom left of contentView
-        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.size.width, self.contentView.frame.size.height)]; //Bottom right of contentView
-        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.size.width, -5)]; //Top right of contentView
-        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, -5)]; //Back to top left
+        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.contentView.frame.size.height)];                           //Bottom left of contentView
+        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.size.width, self.contentView.frame.size.height)];                         //Bottom right of contentView
+        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.size.width, -5)];                                                         //Top right of contentView
+        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, -5)];                                                           //Back to top left
         
         self.layer.shadowPath = shadowPath.CGPath;
     }

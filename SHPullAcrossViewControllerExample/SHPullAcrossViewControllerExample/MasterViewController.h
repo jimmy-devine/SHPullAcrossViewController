@@ -12,10 +12,14 @@
 @interface MasterViewController : UIViewController<SHPullAcrossViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UISlider* tabYPositionSlider;
+@property (nonatomic, weak) IBOutlet UISwitch* showSuperviewMaskSwitch;
+@property (nonatomic, weak) IBOutlet UISlider* superviewMaskMaxAlphaSlider;
 
 @property (nonatomic, strong) SHPullAcrossViewController* pullAcrossViewController;
 
--(IBAction)sliderValueChanged:(UISlider *)sender;
+-(IBAction)tabYPositionSliderValueChanged:(UISlider *)sender;
+-(IBAction)showSuperviewMaskSwitchValueChanged:(UISwitch*)sender;
+-(IBAction)superviewMaskMaxAlphaSliderValueChanged:(UISlider *)sender;
 
 @end
 
