@@ -74,4 +74,10 @@
     self.pullAcrossViewController.yOffset = sender.value;
 }
 
+
+-(IBAction)tabViewCornerRadiusSliderValueChanged:(UISlider*)sender
+{
+    self.pullAcrossViewController.tabViewCornerRadius = sender.value;
+}
+
 @end

@@ -73,6 +73,13 @@ typedef NS_ENUM(NSInteger, SHPullAcrossVCPosition)  {
  */
 @property (nonatomic) CGSize tabViewSize;
 
+/*
+ The radius of the rounded corners for the tab view.  Zero for unrounded corners.
+ 
+ Defaults to 3.
+ */
+@property (nonatomic) CGFloat tabViewCornerRadius;
+
 #pragma mark Superview Mask
 /*
  When true, places a mask over the SHPullAcrossView's superview when the SHPullAcrossView is extended or being extended. This prevents touches to the superview and can also fade to darken the superview.

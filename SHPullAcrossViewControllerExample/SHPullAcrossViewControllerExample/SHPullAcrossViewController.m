@@ -91,7 +91,7 @@
 
 #pragma mark - Getters and Setters
 
--(UIView*) tabView
+-(UIView*)tabView
 {
     if(self.pullAcrossView)
     {
@@ -103,36 +103,36 @@
     }
 }
 
--(void) setTabViewYPosition:(CGFloat)tabViewYPosition
+-(void)setTabViewYPosition:(CGFloat)tabViewYPosition
 {
     _tabViewYPosition = tabViewYPosition;
     [self _updateTabViewFrame];
 }
 
--(void) setTabViewSize:(CGSize)tabViewSize
+-(void)setTabViewSize:(CGSize)tabViewSize
 {
     _tabViewSize = tabViewSize;
     [self _updateTabViewFrame];
 }
 
--(void) setClosedXOffset:(CGFloat)closedXOffset
+-(void)setClosedXOffset:(CGFloat)closedXOffset
 {
     [self setClosedXOffset:closedXOffset animated:NO];
 }
 
--(void) setClosedXOffset:(CGFloat)closedXOffset animated:(BOOL)animated
+-(void)setClosedXOffset:(CGFloat)closedXOffset animated:(BOOL)animated
 {
     _closedXOffset = closedXOffset;
     [self setPosition:self.position animated:animated];
 }
 
 
--(void) setOpenXOffset:(CGFloat)openXOffset
+-(void)setOpenXOffset:(CGFloat)openXOffset
 {
     [self setOpenXOffset:openXOffset animated:NO];
 }
 
--(void) setOpenXOffset:(CGFloat)openXOffset animated:(BOOL)animated
+-(void)setOpenXOffset:(CGFloat)openXOffset animated:(BOOL)animated
 {
     _openXOffset = openXOffset;
     [self setPosition:self.position animated:animated];
@@ -142,6 +142,16 @@
 {
     self.pullAcrossView.frame = CGRectY(self.pullAcrossView.frame, yOffset);
     _yOffset = yOffset;
+}
+
+-(CGFloat)tabViewCornerRadius
+{
+    return self.pullAcrossView.tabViewCornerRadius;
+}
+
+-(void)setTabViewCornerRadius:(CGFloat)tabViewCornerRadius
+{
+    self.pullAcrossView.tabViewCornerRadius = tabViewCornerRadius;
 }
 
 #pragma mark - Positioning

@@ -20,6 +20,7 @@
 @property (nonatomic, strong) UIViewController* contentViewController;
 @property (nonatomic, strong) UIView* contentView;
 @property (nonatomic, weak) id<SHPullAcrossViewDelegate> delgate;
+@property (nonatomic) CGFloat tabViewCornerRadius;
 
 -(instancetype)init;
 -(void)setTabViewFrame:(CGRect)frame;

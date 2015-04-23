@@ -34,6 +34,8 @@
     self.tabView = [[UIView alloc] initWithFrame:CGRectMake(0, 72, 26, 32)];
     self.tabView.backgroundColor = [UIColor whiteColor];
     
+    self.tabViewCornerRadius = 3.0f;
+    
     [self setupFrames];
     [self setupRoundedCorners];
     
@@ -50,6 +52,13 @@
 -(void)setTabView:(UIView *)tabView
 {
     _tabView = tabView;
+}
+
+-(void)setTabViewCornerRadius:(CGFloat)tabViewCornerRadius
+{
+    _tabViewCornerRadius = tabViewCornerRadius;
+    [self setupRoundedCorners];
+    [self setupFrames];
 }
 
 #pragma mark -
@@ -71,7 +80,7 @@
 {
     CAShapeLayer* mask = [CAShapeLayer layer];
     mask.frame = self.tabView.bounds;
-    UIBezierPath* path = [UIBezierPath bezierPathWithRoundedRect:mask.bounds byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerTopLeft cornerRadii:CGSizeMake(3.0f, 3.0f)];
+    UIBezierPath* path = [UIBezierPath bezierPathWithRoundedRect:mask.bounds byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerTopLeft cornerRadii:CGSizeMake(self.tabViewCornerRadius, self.tabViewCornerRadius)];
     mask.fillColor = [[UIColor whiteColor] CGColor];
     mask.backgroundColor = [[UIColor clearColor] CGColor];
     mask.path = [path CGPath];
