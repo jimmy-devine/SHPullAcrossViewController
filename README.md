@@ -1,8 +1,8 @@
 # SHPullAcrossViewController
-SHPullAcrossViewController is a simple, modular view controller that can be added to any view to allow another view to be pulled across the top of it by the user. It is written in Objective-C.
+SHPullAcrossViewController is a simple, modular view controller that can be added to any view to allow another view to be pulled across the top of it by the user. It is written in Objective-C and maintained by [Carvine Software].
 
 ## Installation
-Copy the SHPullAcrossViewController folder from this repository in to your project.
+Copy the `SHPullAcrossViewController` folder from this repository in to your project.
 
 **or**
 
@@ -15,15 +15,15 @@ to your Podfile and install with
 $ pod install
 ```
 
-Then include SHPullAcrossViewController in whatever .h files you need it in using
+Then include `SHPullAcrossViewController` in whatever .h files you need it in using
 ```objective-c
 #include <SHPullAcrossViewController/SHPullAcrossViewController.h>
 ```
 ## Requirements
-SHPullAcrossViewController requires iOS 7.0 or higher.
+`SHPullAcrossViewController` requires iOS 7.0 or higher.
 
 ## Basic API
-Those using this library should interact solely with the `SHPullAcrossViewController`.
+Those using this library should interact solely with the `SHPullAcrossViewController` unless otherwise directed.
 
 #### Initialization
 Initializing a `SHPullAcrossViewController`: 
@@ -55,7 +55,7 @@ If you do add your own view to the `tabView` but wish to retain the click-to-ope
 It is recommended to change the `backgroundColor` property of the `tabView` if your custom subview doesn't completely cover the `tabView`.
 
 ## Advanced API
-These properties may need to be changed in specialized cases. `SHPullAcrossViewController` can be successfully used without knowledge of the properties in this section
+These properties may need to be changed in specialized cases. `SHPullAcrossViewController` can be successfully used without knowledge of the properties in this section.
 
 #### `SHPullAcrossView` Offsets
 ```objective-c
@@ -73,17 +73,16 @@ These properties may need to be changed in specialized cases. `SHPullAcrossViewC
 ```objective-c
 @property (nonatomic) CGFloat tabViewCornerRadius;
 ```
-`tabViewCornerRadius` allows the left two corners of the `tabView` to be rounded. `tabViewCornerRadius` should not be larger than half the height of `tabView` or the width of `tabView`.
+`tabViewCornerRadius` allows the left two corners of the `tabView` to be rounded. `tabViewCornerRadius` should not be larger than half the height of `tabView` or the width of `tabView`, whichever is smaller.
 
 #### Content View
 ```objective-c
 @property (nonatomic, strong) UIColor* contentViewBackgroundColor;
 ```
-
 The `contentViewBackgroundColor` is the color of the view that the passed-in content view controller's view sits on top of. Changing this value is only necessary if the passed-in view has transparancy.
 
 #### Superview Mask
-The superview mask is a view that goes over the superview of the `SHPullAcrossView`. It darkens as the `SHPullAcrossView` is moved closer to open effectively fading out the content behind it. The superview mask also disallows touches to the superview and retracts the `SHPullAcrossView` when it is tapped.
+The superview mask is a view that goes over the superview of the `SHPullAcrossView`. It darkens as the `SHPullAcrossView` is moved closer to open, effectively fading out the content behind it. The superview mask also disallows touches to the superview and retracts the `SHPullAcrossView` when it is tapped.
 ```objective-c
 @property (nonatomic) BOOL showSuperviewMaskWhenOpen;
 @property (nonatomic, copy) UIColor* superviewMaskColor;
@@ -96,7 +95,7 @@ The superview mask is a view that goes over the superview of the `SHPullAcrossVi
 `superviewMaskMaxAlpha` is how transparent the superview mask will be when the `SHPullAcrossView` is fully open. 0 is clear, 1 is completely opaque.
 
 #### Shadows
-All four of the following properties modify the shadow that runs along the border of the `tabView` and content view. They give the `SHPullAcrossView` depth and the illusion that the `SHPullAcrossView` is sitting above its superview.
+All four of the following properties modify the shadow that runs along the border of the `tabView` and content view. They give the `SHPullAcrossView` depth and the illusion that the `SHPullAcrossView` is sitting on top of its superview.
 ```objective-c
 @property (nonatomic) CGFloat shadowOpacity;
 @property (nonatomic) CGColorRef shadowColor;
@@ -108,17 +107,17 @@ These properties are the same found on the layer property of `UIView` and functi
 ## Nomenclature
 The image below shows each view's name in case it isn't clear as to what view the documentation references.
 
-* Orange view - Tab view
+* Orange view - `tabView`
 
 * Blue view - Content view, this view holds the view controller passed in by the user.
 
-* Black outline - SHPullAcrossView, this view holds both the tab view and content view.
+* Black outline - `SHPullAcrossView`, this view holds both the tab view and content view as subviews.
 
 ![Image](https://raw.github.com/CarvineJimmy/SHPullAcrossViewController/master/NomenclatureExample.PNG)
 
 ## Special Thanks
 
-A special thank you John Llurch Zorrilla and those mantaining his [SWRevealViewController] project. SHPullAcrossViewController set out to mimic SWRevealViewController but instead pull a view on to the screen rather than pulling one off the screen. This project takes cues from and elaborates on some of SWRevealViewController's design.
+A special thank you John Llurch Zorrilla and those mantaining his [SWRevealViewController] project. `SHPullAcrossViewController` set out to mimic `SWRevealViewController` but instead pull a view on to the screen rather than pulling one off the screen. This project takes cues from and elaborates on the design of `SWRevealViewController`.
 
 ## License
 Copyright (c) 2014-2015 Carvine Software contactus AT carvinesoftware DOT com
@@ -131,3 +130,4 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 [CocoaPods]:https://cocoapods.org
 [SWRevealViewController]:https://github.com/John-Lluch/SWRevealViewController
+[Carvine Software]:http://carvinesoftware.com
