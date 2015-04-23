@@ -48,6 +48,8 @@
         self.pullAcrossView = [[SHPullAcrossView alloc] init];
         self.pullAcrossView.delgate = self;
         self.view = self.pullAcrossView;
+        [self _initViewShadows];
+        
         self.pullAcrossView.contentViewController = viewController;
         [self addChildViewController:self.pullAcrossView.contentViewController];
         self.pullAcrossView.contentView = self.pullAcrossView.contentViewController.view;
@@ -76,6 +78,14 @@
     _tabViewSize = CGSizeMake(26, 32);
     _closedXOffset = 0;
     _openXOffset = 0;
+}
+
+-(void)_initViewShadows
+{
+    self.shadowOpacity = 0.75f;
+    self.shadowColor = [UIColor blackColor].CGColor;
+    self.shadowRadius = 2.5f;
+    self.shadowOffset = CGSizeMake(-3.5, 3.5);
 }
 
 #pragma mark - Getters and Setters
@@ -209,6 +219,30 @@
 {
     _showSuperviewMaskWhenOpen = showSuperviewMaskWhenOpen;
     [self _setupSuperviewMask];
+}
+
+-(void)setShadowOpacity:(CGFloat)shadowOpacity
+{
+    self.pullAcrossView.layer.shadowOpacity = shadowOpacity;
+    _shadowOpacity = shadowOpacity;
+}
+
+-(void)setShadowColor:(CGColorRef)shadowColor
+{
+    self.pullAcrossView.layer.shadowColor = shadowColor;
+    _shadowColor = shadowColor;
+}
+
+-(void)setShadowRadius:(CGFloat)shadowRadius
+{
+    self.pullAcrossView.layer.shadowRadius = shadowRadius;
+    _shadowRadius = shadowRadius;
+}
+
+-(void)setShadowOffset:(CGSize)shadowOffset
+{
+    self.pullAcrossView.layer.shadowOffset = shadowOffset;
+    _shadowOffset = shadowOffset;
 }
 
 -(void) swapPosition

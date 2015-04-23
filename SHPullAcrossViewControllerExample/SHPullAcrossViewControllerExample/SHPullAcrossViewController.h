@@ -52,7 +52,7 @@ typedef NS_ENUM(NSInteger, SHPullAcrossVCPosition)  {
 @property (nonatomic, readonly) UIView* tabView;
 
 /*
- The y postition of the tab view.  Use this rather than setting the frame of the tabView.
+ The Y postition of the tab view.  Use this rather than setting the frame of the tabView.
  
  Defaults to 72.
  */
@@ -87,6 +87,28 @@ typedef NS_ENUM(NSInteger, SHPullAcrossVCPosition)  {
  Defaults to 0.5f.
  */
 @property (nonatomic) CGFloat superviewMaskMaxAlpha;
+
+/*
+ These are the SHPullAcrossView layer's shadow properties. They behave the same as any CGLayer's shadow properties.
+ */
+#pragma mark - Shadows
+/*
+ Set to 0 to hide the shadow.
+ 
+ Defaults to 0.75f.
+*/
+@property (nonatomic) CGFloat shadowOpacity;
+
+//Defaults to black.
+@property (nonatomic) CGColorRef shadowColor;
+
+//Defaults to 2.5f.
+@property (nonatomic) CGFloat shadowRadius;
+
+//Defaults to CGSizeMake(-3.5, 3.5)
+@property (nonatomic) CGSize shadowOffset;
+
+
 
 @property (nonatomic, weak) id<SHPullAcrossViewControllerDelegate> delegate;
 

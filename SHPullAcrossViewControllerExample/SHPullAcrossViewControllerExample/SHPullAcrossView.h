@@ -19,7 +19,6 @@
 @property (nonatomic, strong) UIView* tabView;
 @property (nonatomic, strong) UIViewController* contentViewController;
 @property (nonatomic, strong) UIView* contentView;
-@property (nonatomic) BOOL enableShadow;
 @property (nonatomic, weak) id<SHPullAcrossViewDelegate> delgate;
 
 -(instancetype)init;

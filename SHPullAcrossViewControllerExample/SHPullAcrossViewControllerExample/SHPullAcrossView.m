@@ -31,8 +31,6 @@
 
 -(void) _initDefaults
 {
-    self.enableShadow = YES;
-    
     self.tabView = [[UIView alloc] initWithFrame:CGRectMake(0, 72, 26, 32)];
     self.tabView.backgroundColor = [UIColor whiteColor];
     
@@ -89,32 +87,21 @@
     
     self.contentView.frame = CGRectX(self.contentView.frame, self.tabView.frame.size.width - 1);
     
-    if(self.enableShadow)
-    {
-        self.layer.masksToBounds = NO;
-        
-        self.layer.shadowOpacity = 0.75f;
-        self.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.layer.shadowRadius = 2.5f;
-        self.layer.shadowOffset = CGSizeMake(-3.5, 3.5);
-        
-        UIBezierPath* shadowPath = [UIBezierPath bezierPath];
-        [shadowPath moveToPoint:CGPointMake(self.contentView.frame.origin.x, -5)];                                                              //Top left of contentView
-        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.tabView.frame.origin.y)];                                  //Top right of tabView
-        [shadowPath addLineToPoint:CGPointMake(0, self.tabView.frame.origin.y)];                                                                //Top left of tabView
-        [shadowPath addLineToPoint:CGPointMake(0, self.tabView.frame.origin.y + self.tabView.frame.size.height)];                               //Bottom left of tabView
-        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.tabView.frame.origin.y + self.tabView.frame.size.height)]; //Bottom right of tabView
-        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.contentView.frame.size.height)];                           //Bottom left of contentView
-        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.size.width, self.contentView.frame.size.height)];                         //Bottom right of contentView
-        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.size.width, -5)];                                                         //Top right of contentView
-        [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, -5)];                                                           //Back to top left
-        
-        self.layer.shadowPath = shadowPath.CGPath;
-    }
-    else
-    {
-        self.layer.shadowOpacity = 0.0f;
-    }
+    self.layer.masksToBounds = NO;
+    
+    UIBezierPath* shadowPath = [UIBezierPath bezierPath];
+    [shadowPath moveToPoint:CGPointMake(self.contentView.frame.origin.x, -5)];                                                              //Top left of contentView
+    [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.tabView.frame.origin.y)];                                  //Top right of tabView
+    [shadowPath addLineToPoint:CGPointMake(0, self.tabView.frame.origin.y)];                                                                //Top left of tabView
+    [shadowPath addLineToPoint:CGPointMake(0, self.tabView.frame.origin.y + self.tabView.frame.size.height)];                               //Bottom left of tabView
+    [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.tabView.frame.origin.y + self.tabView.frame.size.height)]; //Bottom right of tabView
+    [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.contentView.frame.size.height)];                           //Bottom left of contentView
+    [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.size.width, self.contentView.frame.size.height)];                         //Bottom right of contentView
+    [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.size.width, -5)];                                                         //Top right of contentView
+    [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, -5)];                                                           //Back to top left
+    
+    self.layer.shadowPath = shadowPath.CGPath;
+    
 }
 
 -(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
