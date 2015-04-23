@@ -85,4 +85,9 @@
     self.pullAcrossViewController.tabViewCornerRadius = sender.value;
 }
 
+-(IBAction)hiddenSwitchValueChanged:(UISwitch*)sender
+{
+    [self.pullAcrossViewController setHidden:sender.on animated:YES];
+}
+
 @end

@@ -22,6 +22,7 @@
 -(IBAction)openXOffsetSliderValueChanged:(UISlider*)sender;
 -(IBAction)yOffsetSliderValueChanged:(UISlider*)sender;
 -(IBAction)tabViewCornerRadiusSliderValueChanged:(UISlider*)sender;
+-(IBAction)hiddenSwitchValueChanged:(UISwitch*)sender;
 
 @end
 
