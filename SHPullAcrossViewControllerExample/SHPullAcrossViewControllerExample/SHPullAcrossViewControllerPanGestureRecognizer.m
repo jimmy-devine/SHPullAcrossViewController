@@ -17,12 +17,7 @@
 
 @implementation SHPullAcrossViewControllerPanGestureRecognizer
 
-{
-    BOOL _dragging;
-    CGPoint _beginPoint;
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesBegan:touches withEvent:event];
     
@@ -32,7 +27,7 @@
 }
 
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesMoved:touches withEvent:event];
     
