@@ -98,11 +98,23 @@
     
     self.layer.masksToBounds = NO;
     
+    //The offset in both directions (x and y) from the unrounded corner to the rounded corner.
+    CGFloat roundedCornerOffset = self.tabViewCornerRadius * (1 - (1 / sqrt(2)));
+    
     UIBezierPath* shadowPath = [UIBezierPath bezierPath];
     [shadowPath moveToPoint:CGPointMake(self.contentView.frame.origin.x, -5)];                                                              //Top left of contentView
     [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.tabView.frame.origin.y)];                                  //Top right of tabView
-    [shadowPath addLineToPoint:CGPointMake(0, self.tabView.frame.origin.y)];                                                                //Top left of tabView
-    [shadowPath addLineToPoint:CGPointMake(0, self.tabView.frame.origin.y + self.tabView.frame.size.height)];                               //Bottom left of tabView
+    
+    //Top left of tabView (follows rounded corner)
+    [shadowPath addLineToPoint:CGPointMake(self.tabViewCornerRadius, self.tabView.frame.origin.y)];
+    [shadowPath addLineToPoint:CGPointMake(roundedCornerOffset, self.tabView.frame.origin.y + roundedCornerOffset)];
+    [shadowPath addLineToPoint:CGPointMake(0, self.tabView.frame.origin.y + self.tabViewCornerRadius)];
+    
+    //Bottom left of tabView (follows rounded corner)
+    [shadowPath addLineToPoint:CGPointMake(0, self.tabView.frame.origin.y + self.tabView.frame.size.height - self.tabViewCornerRadius)];
+    [shadowPath addLineToPoint:CGPointMake(roundedCornerOffset, self.tabView.frame.origin.y + self.tabView.frame.size.height - roundedCornerOffset)];
+    [shadowPath addLineToPoint:CGPointMake(self.tabViewCornerRadius, self.tabView.frame.origin.y + self.tabView.frame.size.height)];
+    
     [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.tabView.frame.origin.y + self.tabView.frame.size.height)]; //Bottom right of tabView
     [shadowPath addLineToPoint:CGPointMake(self.contentView.frame.origin.x, self.contentView.frame.size.height)];                           //Bottom left of contentView
     [shadowPath addLineToPoint:CGPointMake(self.frame.size.width, self.contentView.frame.size.height)];                                     //Bottom right of contentView
