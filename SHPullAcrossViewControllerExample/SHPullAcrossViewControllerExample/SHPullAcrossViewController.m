@@ -22,7 +22,7 @@
 @property (nonatomic) CGFloat lastXMovement;
 @property (nonatomic) CGFloat minimumPanVelocity;
 @property (nonatomic) NSTimeInterval animationDuration;
-@property (nonatomic) CGFloat shadowWidth;
+@property (nonatomic) CGFloat shadowCorrection;
 
 @property (nonatomic, strong) UIView* superviewMask;
 @property (nonatomic, strong) UITapGestureRecognizer* superviewMaskTap;
@@ -55,8 +55,8 @@
         self.pullAcrossView.contentView = self.pullAcrossView.contentViewController.view;
         [self.pullAcrossView addSubview:self.pullAcrossView.contentView];
         
-        [self setupPanGestureRecognizers];
-        [self setupTapGestureRecognizer];
+        [self _setupPanGestureRecognizers];
+        [self _setupTapGestureRecognizer];
     }
     return self;
 }
@@ -69,7 +69,7 @@
     _animating = NO;
     _minimumPanVelocity = 500;
     _animationDuration = .3f;
-    _shadowWidth = 6;
+    _shadowCorrection = 6;
     _hidden = NO;
     _showSuperviewMaskWhenOpen = YES;
     _superviewMaskMaxAlpha = .5f;
@@ -165,7 +165,7 @@
     [self _setPosition:position withDuration:animationDuration];
 }
 
--(void)closePullAcrossView
+-(void)_closePullAcrossView
 {
     [self setPosition:SHPullAcrossVCPositionClosed animated:YES];
 }
@@ -187,11 +187,11 @@
         CGRect finalFrame;
         if(hidden)
         {
-            finalFrame = CGRectX(self.pullAcrossView.frame, self.view.superview.frame.size.width + self.shadowWidth);
+            finalFrame = CGRectX(self.pullAcrossView.frame, self.view.superview.frame.size.width + self.shadowCorrection);
         }
         else
         {
-            finalFrame = CGRectX(self.pullAcrossView.frame, [self closedXPosition]);
+            finalFrame = CGRectX(self.pullAcrossView.frame, [self _closedXPosition]);
         }
         if(animated)
         {
@@ -252,7 +252,7 @@
     _shadowOffset = shadowOffset;
 }
 
--(void) swapPosition
+-(void)_swapPosition
 {
     if(self.position == SHPullAcrossVCPositionClosed)
     {
@@ -266,7 +266,7 @@
 
 #pragma mark - Gesture Recognizers
 
--(void)setupPanGestureRecognizers
+-(void)_setupPanGestureRecognizers
 {
     if(!self.panGesturesExist)
     {
@@ -279,7 +279,7 @@
     }
 }
 
--(void)setupTapGestureRecognizer
+-(void)_setupTapGestureRecognizer
 {
     if(!self.tapGestureExists)
     {
@@ -292,7 +292,7 @@
 
 -(void)_handleTapGesture:(UITapGestureRecognizer*)recognizer
 {
-    [self swapPosition];
+    [self _swapPosition];
 }
 
 -(void)_handlePanGesture:(UIPanGestureRecognizer*)recognizer
@@ -313,18 +313,18 @@
             CGFloat currentLocation = self.pullAcrossView.frame.origin.x;
             CGFloat newLocation = currentLocation + xMovement - self.lastXMovement;
             
-            if(newLocation < [self openXPosition])
+            if(newLocation < [self _openXPosition])
             {
-                newLocation = [self openXPosition];
+                newLocation = [self _openXPosition];
             }
-            else if(newLocation > [self closedXPosition])
+            else if(newLocation > [self _closedXPosition])
             {
-                newLocation = [self closedXPosition];
+                newLocation = [self _closedXPosition];
             }
             
             self.pullAcrossView.frame = CGRectX(self.pullAcrossView.frame, newLocation);
             self.lastXMovement = xMovement;
-            self.superviewMask.backgroundColor = [self determineBackgroundColorForPan];
+            self.superviewMask.backgroundColor = [self _determineBackgroundColorForPan];
             break;
         }
             
@@ -383,7 +383,7 @@
 
 #pragma mark - SHPullAcrossViewDelegate
 
--(void) pullAcrossViewWasAddedToSuperview:(UIView*)superview
+-(void)pullAcrossViewWasAddedToSuperview:(UIView*)superview
 {
     [self _setupSuperviewMask];
 }
@@ -421,7 +421,7 @@
     {
         self.superviewMask = [[UIView alloc] init];
         
-        self.superviewMaskTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closePullAcrossView)];
+        self.superviewMaskTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_closePullAcrossView)];
         [self.superviewMask addGestureRecognizer:self.superviewMaskTap];
         
         self.superviewMask.frame = self.pullAcrossView.superview.bounds;
@@ -445,11 +445,11 @@
     CGFloat distanceRemaining;
     if(position == SHPullAcrossVCPositionOpen)
     {
-        distanceRemaining = self.pullAcrossView.frame.origin.x + self.pullAcrossView.frame.size.width - (self.view.superview.frame.size.width + self.shadowWidth);
+        distanceRemaining = self.pullAcrossView.frame.origin.x + self.pullAcrossView.frame.size.width - (self.view.superview.frame.size.width + self.shadowCorrection);
     }
     else
     {
-        distanceRemaining = self.view.superview.frame.size.width + self.shadowWidth - self.pullAcrossView.frame.origin.x;
+        distanceRemaining = self.view.superview.frame.size.width + self.shadowCorrection - self.pullAcrossView.frame.origin.x;
     }
     return distanceRemaining;
 }
@@ -457,8 +457,8 @@
 -(void)_setPosition:(SHPullAcrossVCPosition)position withDuration:(NSTimeInterval)duration
 {
     void(^animations)() = ^{
-        self.pullAcrossView.frame = [self determineFinalPosition:position];
-        self.superviewMask.backgroundColor = [self determineBackgroundColorForPosition:position];
+        self.pullAcrossView.frame = [self _determineFinalPosition:position];
+        self.superviewMask.backgroundColor = [self _determineBackgroundColorForPosition:position];
     };
     
     void(^completion)(BOOL finished) = ^(BOOL finished){
@@ -484,21 +484,21 @@
     }
 }
 
--(CGRect)determineFinalPosition:(SHPullAcrossVCPosition)position
+-(CGRect)_determineFinalPosition:(SHPullAcrossVCPosition)position
 {
     CGRect finalPosition;
     if(position == SHPullAcrossVCPositionClosed)
     {
-        finalPosition = CGRectX(self.pullAcrossView.frame, [self closedXPosition]);
+        finalPosition = CGRectX(self.pullAcrossView.frame, [self _closedXPosition]);
     }
     else
     {
-        finalPosition = CGRectX(self.pullAcrossView.frame, [self openXPosition]);
+        finalPosition = CGRectX(self.pullAcrossView.frame, [self _openXPosition]);
     }
     return finalPosition;
 }
 
--(UIColor*)determineBackgroundColorForPosition:(SHPullAcrossVCPosition)position
+-(UIColor*)_determineBackgroundColorForPosition:(SHPullAcrossVCPosition)position
 {
     CGFloat finalAlpha;
     if(position == SHPullAcrossVCPositionClosed)
@@ -512,19 +512,19 @@
     return [self.superviewMaskColor colorWithAlphaComponent:finalAlpha];
 }
 
--(UIColor*)determineBackgroundColorForPan
+-(UIColor*)_determineBackgroundColorForPan
 {
-    CGFloat pullAcrossPercentage = 1 - ((self.pullAcrossView.frame.origin.x - [self openXPosition]) / (self.pullAcrossView.frame.size.width - [self openXPosition]));
+    CGFloat pullAcrossPercentage = 1 - ((self.pullAcrossView.frame.origin.x - [self _openXPosition]) / (self.pullAcrossView.frame.size.width - [self _openXPosition]));
     return [self.superviewMaskColor colorWithAlphaComponent:pullAcrossPercentage * self.superviewMaskMaxAlpha];
 }
 
--(CGFloat)closedXPosition
+-(CGFloat)_closedXPosition
 {
-    return self.view.superview.frame.size.width + self.shadowWidth - self.pullAcrossView.tabView.frame.size.width - self.closedXOffset;
+    return self.view.superview.frame.size.width + self.shadowCorrection - self.pullAcrossView.tabView.frame.size.width - self.closedXOffset;
 }
 
--(CGFloat)openXPosition
+-(CGFloat)_openXPosition
 {
-    return self.view.superview.frame.size.width + self.shadowWidth - self.pullAcrossView.frame.size.width - self.openXOffset;
+    return self.view.superview.frame.size.width + self.shadowCorrection - self.pullAcrossView.frame.size.width - self.openXOffset;
 }
 @end

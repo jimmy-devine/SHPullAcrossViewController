@@ -26,10 +26,8 @@ typedef NS_ENUM(NSInteger, SHPullAcrossVCPosition)  {
 
 @interface SHPullAcrossViewController : UIViewController <UIGestureRecognizerDelegate, SHPullAcrossViewDelegate>
 
-@property (nonatomic) SHPullAcrossVCPosition position;
-@property (nonatomic) BOOL hidden;
-
-#pragma mark - SHPullAcrossView Offsets
+#pragma mark - Properties
+#pragma mark SHPullAcrossView Offsets
 
 /*
  How far onto the screen the edge of the content view controller is when the pull across controller is closed. Positive numbers move it onto the screen. Negative number move it furtherer off the screen.
@@ -52,7 +50,7 @@ typedef NS_ENUM(NSInteger, SHPullAcrossVCPosition)  {
  */
 @property (nonatomic) CGFloat yOffset;
 
-#pragma mark - Tabview
+#pragma mark Tabview
 
 /*
  This is the view that sticks out while the controller is in the closed state. It is what the user pulls or taps to extend the SHPullAcrossViewController. This view is created by SHPullAcrossViewController but can be altered safely.
@@ -75,7 +73,7 @@ typedef NS_ENUM(NSInteger, SHPullAcrossVCPosition)  {
  */
 @property (nonatomic) CGSize tabViewSize;
 
-#pragma mark - Superview Mask
+#pragma mark Superview Mask
 /*
  When true, places a mask over the SHPullAcrossView's superview when the SHPullAcrossView is extended or being extended. This prevents touches to the superview and can also fade to darken the superview.
  
@@ -102,7 +100,7 @@ typedef NS_ENUM(NSInteger, SHPullAcrossVCPosition)  {
 /*
  These are the SHPullAcrossView layer's shadow properties. They behave the same as any CGLayer's shadow properties.
  */
-#pragma mark - Shadows
+#pragma mark Shadows
 
 /*
  Set to 0 to hide the shadow.
@@ -120,15 +118,39 @@ typedef NS_ENUM(NSInteger, SHPullAcrossVCPosition)  {
 //Defaults to CGSizeMake(-3.5, 3.5)
 @property (nonatomic) CGSize shadowOffset;
 
+#pragma mark Positioning and Visibility
+/*
+ See the setter methods below for details on position and hidden.
+ */
+@property (nonatomic) SHPullAcrossVCPosition position;
+@property (nonatomic) BOOL hidden;
 
-
+#pragma mark Delegate
 @property (nonatomic, weak) id<SHPullAcrossViewControllerDelegate> delegate;
 
+#pragma mark - Methods
+#pragma mark Init
+/*
+ The only way SHPullAcrossViewController should be initialized.
+ 
+ The passed in UIViewController's view will be displayed in the SHPullAcrossView
+ */
 -(instancetype)initWithViewController:(UIViewController*)viewController;
 
+#pragma mark Positioning and Visibility
+/*
+ Sets the position of the SHPullAcrossView to open or closed with the option to animate the change.
+ 
+ Defaults to SHPullAcrossVCPositionClosed
+ */
 -(void)setPosition:(SHPullAcrossVCPosition)position;
 -(void)setPosition:(SHPullAcrossVCPosition)position animated:(BOOL)animated;
 
+/*
+ Sets the visibility of the SHPullAcrossView the option to animate the change.
+ 
+ Defaults to NO.
+ */
 -(void)setHidden:(BOOL)hidden;
 -(void)setHidden:(BOOL)hidden animated:(BOOL)animated;
 
