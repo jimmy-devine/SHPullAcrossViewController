@@ -29,7 +29,7 @@
     return self;
 }
 
--(void) _initDefaults
+-(void)_initDefaults
 {
     self.tabView = [[UIView alloc] initWithFrame:CGRectMake(0, 72, 26, 32)];
     self.tabView.backgroundColor = [UIColor whiteColor];

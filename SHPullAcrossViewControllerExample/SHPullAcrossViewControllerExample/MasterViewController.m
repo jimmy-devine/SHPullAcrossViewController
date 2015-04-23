@@ -15,7 +15,7 @@
 
 @implementation MasterViewController
 
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
     [super viewDidLoad];
     
