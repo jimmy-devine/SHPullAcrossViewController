@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name          = "SHPullAcrossViewController"
-  s.version       = "1.0"
+  s.version       = "1.0.0"
   s.summary       = "A UIViewController that pulls a UIView over another UIView."
   s.homepage      = "https://github.com/CarvineJimmy/SHPullAcrossViewController"
   s.license       = "MIT"
