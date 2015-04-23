@@ -32,22 +32,24 @@ Initializing a `SHPullAcrossViewController`:
 ```
 
 #### Positioning
-Animating the position of the `SHPullAcrossView` using `SHPullAcrossVCPositionClosed` or `SHPullAcrossVCPositionOpen`:
+Animating the position of the `SHPullAcrossView` to open or closed using `SHPullAcrossVCPositionClosed` or `SHPullAcrossVCPositionOpen`:
 ```objective-c
 -(void)setPosition:(SHPullAcrossVCPosition)position animated:(BOOL)animated;
 ```
 
 #### Hiding
-Hiding the `SHPullAcrossView` completely (including removal of the tab view):
+Hiding the `SHPullAcrossView` completely (which includes `tabView`):
 ```objective-c
 -(void)setHidden:(BOOL)hidden animated:(BOOL)animated;
 ```
 
 #### Tab view
-Add your own custom view to the `tabView` by using the property:
+Add your own custom view as a subview to the `tabView` by using the property:
 ```objective-c
 @property (nonatomic, readonly) UIView* tabView;
 ```
+**Do NOT change the frame of `tabView`.** Manipulating the position and size of the tabView should be accomplished with the `tabViewYPostition`, and `tabViewSize`.
+
 If you do add your own view to the `tabView` but wish to retain the click-to-open functionality without adding your own button, make sure that your view's `userInteractionEnabled` property is set to `NO`.
 
 It is recommended to change the `backgroundColor` property of the `tabView` if your custom view doesn't completely cover the `tabView`.
