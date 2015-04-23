@@ -48,7 +48,7 @@
         self.pullAcrossView = [[SHPullAcrossView alloc] init];
         self.pullAcrossView.delgate = self;
         self.view = self.pullAcrossView;
-        [self _initViewShadows];
+        [self _initViewDefaults];
         
         self.pullAcrossView.contentViewController = viewController;
         [self addChildViewController:self.pullAcrossView.contentViewController];
@@ -81,12 +81,13 @@
     _yOffset = 0;
 }
 
--(void)_initViewShadows
+-(void)_initViewDefaults
 {
     self.shadowOpacity = 0.75f;
     self.shadowColor = [UIColor blackColor].CGColor;
     self.shadowRadius = 2.5f;
     self.shadowOffset = CGSizeMake(-3.5, 3.5);
+    self.contentViewBackgroundColor = [UIColor whiteColor];
 }
 
 #pragma mark - Getters and Setters
@@ -262,16 +263,10 @@
     _shadowOffset = shadowOffset;
 }
 
--(void)_swapPosition
+-(void)setContentViewBackgroundColor:(UIColor *)contentViewBackgroundColor
 {
-    if(self.position == SHPullAcrossVCPositionClosed)
-    {
-        [self setPosition:SHPullAcrossVCPositionOpen animated:YES];
-    }
-    else
-    {
-        [self setPosition:SHPullAcrossVCPositionClosed animated:YES];
-    }
+    self.pullAcrossView.contentView.backgroundColor = contentViewBackgroundColor;
+    _contentViewBackgroundColor = contentViewBackgroundColor;
 }
 
 #pragma mark - Gesture Recognizers
@@ -303,6 +298,18 @@
 -(void)_handleTapGesture:(UITapGestureRecognizer*)recognizer
 {
     [self _swapPosition];
+}
+
+-(void)_swapPosition
+{
+    if(self.position == SHPullAcrossVCPositionClosed)
+    {
+        [self setPosition:SHPullAcrossVCPositionOpen animated:YES];
+    }
+    else
+    {
+        [self setPosition:SHPullAcrossVCPositionClosed animated:YES];
+    }
 }
 
 -(void)_handlePanGesture:(UIPanGestureRecognizer*)recognizer

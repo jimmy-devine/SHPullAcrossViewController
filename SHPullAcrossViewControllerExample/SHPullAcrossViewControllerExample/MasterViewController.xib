@@ -70,14 +70,26 @@
                         <action selector="closedXOffsetSliderValueChanged:" destination="-1" eventType="valueChanged" id="LXn-9w-jMm"/>
                     </connections>
                 </slider>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Y Offset" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adY-dd-wMg">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Open X Offset" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0PL-7S-rJ2">
                     <rect key="frame" x="33" y="343" width="254" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-100" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Eql-pM-JME">
+                    <rect key="frame" x="31" y="373" width="258" height="31"/>
+                    <connections>
+                        <action selector="openXOffsetSliderValueChanged:" destination="-1" eventType="valueChanged" id="K66-aY-R8U"/>
+                    </connections>
+                </slider>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Y Offset" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adY-dd-wMg">
+                    <rect key="frame" x="37" y="411" width="254" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-300" maxValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="b9P-hC-Ysd">
-                    <rect key="frame" x="31" y="372" width="258" height="31"/>
+                    <rect key="frame" x="35" y="440" width="258" height="31"/>
                     <connections>
                         <action selector="yOffsetSliderValueChanged:" destination="-1" eventType="valueChanged" id="uBj-gF-k9l"/>
                     </connections>

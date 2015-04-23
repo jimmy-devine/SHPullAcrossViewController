@@ -19,6 +19,7 @@
 -(IBAction)showSuperviewMaskSwitchValueChanged:(UISwitch*)sender;
 -(IBAction)superviewMaskMaxAlphaSliderValueChanged:(UISlider*)sender;
 -(IBAction)closedXOffsetSliderValueChanged:(UISlider*)sender;
+-(IBAction)openXOffsetSliderValueChanged:(UISlider*)sender;
 -(IBAction)yOffsetSliderValueChanged:(UISlider*)sender;
 -(IBAction)tabViewCornerRadiusSliderValueChanged:(UISlider*)sender;
 
