@@ -78,6 +78,7 @@
     _tabViewSize = CGSizeMake(26, 32);
     _closedXOffset = 0;
     _openXOffset = 0;
+    _yOffset = 0;
 }
 
 -(void)_initViewShadows
@@ -135,6 +136,12 @@
 {
     _openXOffset = openXOffset;
     [self setPosition:self.position animated:animated];
+}
+
+-(void)setYOffset:(CGFloat)yOffset
+{
+    self.pullAcrossView.frame = CGRectY(self.pullAcrossView.frame, yOffset);
+    _yOffset = yOffset;
 }
 
 #pragma mark - Positioning

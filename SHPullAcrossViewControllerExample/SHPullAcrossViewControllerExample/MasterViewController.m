@@ -69,4 +69,9 @@
     self.pullAcrossViewController.closedXOffset = sender.value;
 }
 
+-(IBAction)yOffsetSliderValueChanged:(UISlider*)sender
+{
+    self.pullAcrossViewController.yOffset = sender.value;
+}
+
 @end

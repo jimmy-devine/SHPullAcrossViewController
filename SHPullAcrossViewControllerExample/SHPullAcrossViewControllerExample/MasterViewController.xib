@@ -7,8 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MasterViewController">
             <connections>
-                <outlet property="showSuperviewMaskSwitch" destination="vRE-pS-pVf" id="YPa-gy-7De"/>
-                <outlet property="superviewMaskMaxAlphaSlider" destination="zvu-cN-qyV" id="6Gk-rQ-aIu"/>
                 <outlet property="tabYPositionSlider" destination="Yxm-qr-BCL" id="yaZ-Ac-24l"/>
                 <outlet property="view" destination="Dgf-YF-ZsV" id="wZS-jM-6bV"/>
             </connections>
@@ -66,10 +64,22 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="Kto-q0-c92">
+                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-25" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="Kto-q0-c92">
                     <rect key="frame" x="31" y="305" width="258" height="31"/>
                     <connections>
                         <action selector="closedXOffsetSliderValueChanged:" destination="-1" eventType="valueChanged" id="LXn-9w-jMm"/>
+                    </connections>
+                </slider>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Y Offset" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adY-dd-wMg">
+                    <rect key="frame" x="33" y="343" width="254" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-300" maxValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="b9P-hC-Ysd">
+                    <rect key="frame" x="31" y="372" width="258" height="31"/>
+                    <connections>
+                        <action selector="yOffsetSliderValueChanged:" destination="-1" eventType="valueChanged" id="uBj-gF-k9l"/>
                     </connections>
                 </slider>
             </subviews>
