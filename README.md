@@ -31,6 +31,16 @@ Code here
 ```objective-c
 Code here
 ```
+## Nomenclature
+The image below shows each view's name in case it isn't clear as to what view the documentation references.
+
+* Orange view - Tab view
+
+* Blue view - Content view
+
+* Black outline - SHPullAcrossView, this view holds both the tab view and content view.
+
+![Image](https://raw.github.com/CarvineJimmy/SHPullAcrossViewController/master/NomenclatureExample.PNG)
 
 ## Special Thanks
 
