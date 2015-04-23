@@ -94,12 +94,6 @@
                                         <action selector="openXOffsetSliderValueChanged:" destination="-1" eventType="valueChanged" id="K66-aY-R8U"/>
                                     </connections>
                                 </slider>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Y Offset" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adY-dd-wMg">
-                                    <rect key="frame" x="33" y="396" width="254" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-300" maxValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="b9P-hC-Ysd">
                                     <rect key="frame" x="27" y="425" width="258" height="31"/>
                                     <connections>
@@ -113,17 +107,23 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Uzf-BR-RIN">
-                                    <rect key="frame" x="31" y="492" width="258" height="31"/>
+                                    <rect key="frame" x="27" y="492" width="258" height="31"/>
                                     <connections>
                                         <action selector="tabViewCornerRadiusSliderValueChanged:" destination="-1" eventType="valueChanged" id="IRJ-uY-FJl"/>
                                     </connections>
                                 </slider>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yU6-jb-eF4">
-                                    <rect key="frame" x="33" y="559" width="51" height="31"/>
+                                    <rect key="frame" x="29" y="559" width="51" height="31"/>
                                     <connections>
                                         <action selector="hiddenSwitchValueChanged:" destination="-1" eventType="valueChanged" id="zZQ-eE-HO0"/>
                                     </connections>
                                 </switch>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Y Offset" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adY-dd-wMg">
+                                    <rect key="frame" x="29" y="396" width="254" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>

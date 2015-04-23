@@ -26,12 +26,20 @@
     
     //This is the view controller that will be pulled out using SHPullAcrossViewController
     UIViewController* contentViewController = [[UIViewController alloc] init];
-    contentViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width - 50, self.view.frame.size.height);
+    contentViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width - 50, [UIScreen mainScreen].bounds.size.height);
     contentViewController.view.backgroundColor = [UIColor blueColor];
+    
+    UILabel* contentViewLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, contentViewController.view.frame.size.height / 2 - 50, contentViewController.view.frame.size.width, 100)];
+    contentViewLabel.text = @"This is the content view controller!";
+    contentViewLabel.numberOfLines = 2;
+    contentViewLabel.textAlignment = NSTextAlignmentCenter;
+    contentViewLabel.textColor = [UIColor whiteColor];
+    contentViewLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:15];
+    [contentViewController.view addSubview:contentViewLabel];
     
     self.pullAcrossViewController = [[SHPullAcrossViewController alloc] initWithViewController:contentViewController];
     self.pullAcrossViewController.delegate = self;
-    self.pullAcrossViewController.tabView.backgroundColor = [UIColor orangeColor];
+    self.pullAcrossViewController.tabView.backgroundColor = [UIColor blueColor];
     
     [self addChildViewController:self.pullAcrossViewController];
     [self.view addSubview:self.pullAcrossViewController.view];
