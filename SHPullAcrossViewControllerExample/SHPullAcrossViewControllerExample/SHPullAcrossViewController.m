@@ -155,6 +155,62 @@
     self.pullAcrossView.tabViewCornerRadius = tabViewCornerRadius;
 }
 
+-(void)setShowSuperviewMaskWhenOpen:(BOOL)showSuperviewMaskWhenOpen
+{
+    _showSuperviewMaskWhenOpen = showSuperviewMaskWhenOpen;
+    [self _setupSuperviewMask];
+}
+
+-(CGFloat)shadowOpacity
+{
+    return self.pullAcrossView.layer.shadowOpacity;
+}
+
+-(void)setShadowOpacity:(CGFloat)shadowOpacity
+{
+    self.pullAcrossView.layer.shadowOpacity = shadowOpacity;
+}
+
+-(CGColorRef)shadowColor
+{
+    return self.pullAcrossView.layer.shadowColor;
+}
+
+-(void)setShadowColor:(CGColorRef)shadowColor
+{
+    self.pullAcrossView.layer.shadowColor = shadowColor;
+}
+
+-(CGFloat)shadowRadius
+{
+    return self.pullAcrossView.layer.shadowRadius;
+}
+
+-(void)setShadowRadius:(CGFloat)shadowRadius
+{
+    self.pullAcrossView.layer.shadowRadius = shadowRadius;
+}
+
+-(CGSize)shadowOffset
+{
+    return self.pullAcrossView.layer.shadowOffset;
+}
+
+-(void)setShadowOffset:(CGSize)shadowOffset
+{
+    self.pullAcrossView.layer.shadowOffset = shadowOffset;
+}
+
+-(UIColor*)contentViewBackgroundColor
+{
+    return self.pullAcrossView.contentView.backgroundColor;
+}
+
+-(void)setContentViewBackgroundColor:(UIColor *)contentViewBackgroundColor
+{
+    self.pullAcrossView.contentView.backgroundColor = contentViewBackgroundColor;
+}
+
 #pragma mark - Positioning
 
 -(void)setPosition:(SHPullAcrossVCPosition)position
@@ -180,6 +236,8 @@
 {
     [self setPosition:SHPullAcrossVCPositionClosed animated:YES];
 }
+
+#pragma mark - Hidden
 
 -(void)setHidden:(BOOL)hidden
 {
@@ -231,42 +289,6 @@
             completion(YES);
         }
     }
-}
-
--(void)setShowSuperviewMaskWhenOpen:(BOOL)showSuperviewMaskWhenOpen
-{
-    _showSuperviewMaskWhenOpen = showSuperviewMaskWhenOpen;
-    [self _setupSuperviewMask];
-}
-
--(void)setShadowOpacity:(CGFloat)shadowOpacity
-{
-    self.pullAcrossView.layer.shadowOpacity = shadowOpacity;
-    _shadowOpacity = shadowOpacity;
-}
-
--(void)setShadowColor:(CGColorRef)shadowColor
-{
-    self.pullAcrossView.layer.shadowColor = shadowColor;
-    _shadowColor = shadowColor;
-}
-
--(void)setShadowRadius:(CGFloat)shadowRadius
-{
-    self.pullAcrossView.layer.shadowRadius = shadowRadius;
-    _shadowRadius = shadowRadius;
-}
-
--(void)setShadowOffset:(CGSize)shadowOffset
-{
-    self.pullAcrossView.layer.shadowOffset = shadowOffset;
-    _shadowOffset = shadowOffset;
-}
-
--(void)setContentViewBackgroundColor:(UIColor *)contentViewBackgroundColor
-{
-    self.pullAcrossView.contentView.backgroundColor = contentViewBackgroundColor;
-    _contentViewBackgroundColor = contentViewBackgroundColor;
 }
 
 #pragma mark - Gesture Recognizers
