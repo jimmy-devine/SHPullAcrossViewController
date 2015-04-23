@@ -83,7 +83,7 @@ typedef NS_ENUM(NSInteger, SHPullAcrossVCPosition)  {
 #pragma mark Content View
 
 /*
- The background color of the content view.
+ The background color of the content view.  The content view will not be visible unless the content view controller has transparency.
  
  Defaults to white.
  */
