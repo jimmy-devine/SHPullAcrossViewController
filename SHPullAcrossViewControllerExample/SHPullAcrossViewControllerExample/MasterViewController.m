@@ -24,7 +24,7 @@
     self.tabYPositionSlider.maximumValue = self.view.frame.size.height - 60;
     self.tabYPositionSlider.value = 70;
     
-    //Set up Pull Across View
+    //This is the view controller that will be pulled out using SHPullAcrossViewController
     UIViewController* contentViewController = [[UIViewController alloc] init];
     contentViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width - 50, self.view.frame.size.height);
     contentViewController.view.backgroundColor = [UIColor blueColor];
@@ -67,6 +67,11 @@
 -(IBAction)closedXOffsetSliderValueChanged:(UISlider *)sender
 {
     self.pullAcrossViewController.closedXOffset = sender.value;
+}
+
+-(IBAction)openXOffsetSliderValueChanged:(UISlider*)sender
+{
+    self.pullAcrossViewController.openXOffset = sender.value;
 }
 
 -(IBAction)yOffsetSliderValueChanged:(UISlider*)sender

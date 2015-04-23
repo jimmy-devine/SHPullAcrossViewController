@@ -55,7 +55,7 @@ typedef NS_ENUM(NSInteger, SHPullAcrossVCPosition)  {
 /*
  This is the view that sticks out while the controller is in the closed state. It is what the user pulls or taps to extend the SHPullAcrossViewController. This view is created by SHPullAcrossViewController but can be altered safely.
  
- Do not change the frame for this view. If you want to change the frame of the tabView use tabViewYPosition and tabViewSize.
+ Do not change the frame for this view. Instead use tabViewYPosition and tabViewSize.
 */
 @property (nonatomic, readonly) UIView* tabView;
 
@@ -72,6 +72,15 @@ typedef NS_ENUM(NSInteger, SHPullAcrossVCPosition)  {
  Defaults to (26, 32).
  */
 @property (nonatomic) CGSize tabViewSize;
+
+#pragma mark Content View
+
+/*
+ The background color of the content view.
+ 
+ Defaults to white.
+ */
+@property (nonatomic, strong) UIColor* contentViewBackgroundColor;
 
 #pragma mark Superview Mask
 /*
