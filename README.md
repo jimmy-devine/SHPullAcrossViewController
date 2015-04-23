@@ -23,11 +23,38 @@ Then include SHPullAcrossViewController in whatever .h files you need it in usin
 SHPullAcrossViewController requires iOS 7.0 or higher.
 
 ## Basic API
-`List`, `of`, `properties`, `or`, `classes`
+Those using this library should interact solely with the `SHPullAcrossViewController`.
+
+#### Initialization
+Initializing a `SHPullAcrossViewController`: 
 ```objective-c
-Code here
+-(instancetype)initWithViewController:(UIViewController*)viewController;
 ```
+
+#### Positioning
+Animating the position of the `SHPullAcrossView` using `SHPullAcrossVCPositionClosed` or `SHPullAcrossVCPositionOpen`:
+```objective-c
+-(void)setPosition:(SHPullAcrossVCPosition)position animated:(BOOL)animated;
+```
+
+#### Hiding
+Hiding the `SHPullAcrossView` completely (including removal of the tab view):
+```objective-c
+-(void)setHidden:(BOOL)hidden animated:(BOOL)animated;
+```
+
+#### Tab view
+Add your own custom view to the `tabView` by using the property:
+```objective-c
+@property (nonatomic, readonly) UIView* tabView;
+```
+If you do add your own view to the `tabView` but wish to retain the click-to-open functionality without adding your own button, make sure that your view's `userInteractionEnabled` property is set to `NO`.
+
+It is recommended to change the `backgroundColor` property of the `tabView` if your custom view doesn't completely cover the `tabView`.
+
 ## Advanced API
+
+
 ```objective-c
 Code here
 ```
@@ -36,7 +63,7 @@ The image below shows each view's name in case it isn't clear as to what view th
 
 * Orange view - Tab view
 
-* Blue view - Content view
+* Blue view - Content view, this view holds the view controller passed in by the user.
 
 * Black outline - SHPullAcrossView, this view holds both the tab view and content view.
 
