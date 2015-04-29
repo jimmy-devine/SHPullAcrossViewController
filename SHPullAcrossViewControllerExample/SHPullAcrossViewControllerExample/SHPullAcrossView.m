@@ -36,8 +36,8 @@
     
     self.tabViewCornerRadius = 3.0f;
     
-    [self setupFrames];
-    [self setupRoundedCorners];
+    [self _setupFrames];
+    [self _setupRoundedCorners];
     
     [self addSubview:self.tabView];
 }
@@ -46,7 +46,7 @@
 -(void)setContentView:(UIView *)contentView
 {
     _contentView = contentView;
-    [self setupFrames];
+    [self _setupFrames];
 }
 
 -(void)setTabView:(UIView *)tabView
@@ -57,15 +57,15 @@
 -(void)setTabViewCornerRadius:(CGFloat)tabViewCornerRadius
 {
     _tabViewCornerRadius = tabViewCornerRadius;
-    [self setupRoundedCorners];
-    [self setupFrames];
+    [self _setupRoundedCorners];
+    [self _setupFrames];
 }
 
 #pragma mark -
 -(void)setTabViewFrame:(CGRect)frame
 {
     self.tabView.frame = frame;
-    [self setupFrames];
+    [self _setupFrames];
 }
 
 -(void)didMoveToSuperview
@@ -76,7 +76,7 @@
     }
 }
 
--(void)setupRoundedCorners
+-(void)_setupRoundedCorners
 {
     CAShapeLayer* mask = [CAShapeLayer layer];
     mask.frame = self.tabView.bounds;
@@ -90,7 +90,7 @@
     [self addSubview:self.tabView];
 }
 
--(void)setupFrames
+-(void)_setupFrames
 {
     self.frame = CGRectWidthHeight(self.frame, self.contentView.frame.size.width + self.tabView.frame.size.width, self.contentView.frame.size.height);
     

@@ -32,15 +32,23 @@
     [super touchesMoved:touches withEvent:event];
     
     if ( _dragging || self.state == UIGestureRecognizerStateFailed)
+    {
         return;
+    }
     
     const int kDirectionPanThreshold = 5;
     
     UITouch *touch = [touches anyObject];
     CGPoint nowPoint = [touch locationInView:self.view];
     
-    if (fabs(nowPoint.x - _beginPoint.x) > kDirectionPanThreshold) _dragging = YES;
-    else if (fabs(nowPoint.y - _beginPoint.y) > kDirectionPanThreshold) self.state = UIGestureRecognizerStateFailed;
+    if (fabs(nowPoint.x - _beginPoint.x) > kDirectionPanThreshold)
+    {
+        _dragging = YES;
+    }
+    else if (fabs(nowPoint.y - _beginPoint.y) > kDirectionPanThreshold)
+    {
+        self.state = UIGestureRecognizerStateFailed;
+    }
 }
 
 @end
